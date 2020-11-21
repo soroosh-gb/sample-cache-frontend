@@ -2,6 +2,7 @@ import {combineReducers} from'redux'
 
 const defaultState={
     api: [],
+    user: null,
 
 }
 
@@ -25,5 +26,5 @@ function apiReducer(state = defaultState.api, action){
 const rootReducer = combineReducers({
     api: apiReducer,
 })
-
+// console.log(defaultState)
 export default rootReducer
