@@ -1,8 +1,15 @@
 import React from 'react'
 import ReactAudioPlayer from 'react-audio-player';
+import { connect } from 'react-redux'
+import { removeFromCollection } from '../redux/actions'
 
 class CollectionSample extends React.Component{
 
+
+    localClickHandler = () => {
+        // console.log(this.props.id)
+        this.props.remove(this.props.id)
+    }
     render(){
         console.log("this.props")
         return(
@@ -26,4 +33,9 @@ class CollectionSample extends React.Component{
     }
 }
 
-export default CollectionSample
+function mdp(dispatch){
+    return { remove: (id) => dispatch(removeFromCollection(id))}
+}
+
+
+export default connect(null, mdp)(CollectionSample)

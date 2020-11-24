@@ -169,3 +169,18 @@ export function fetchCollectionAction(){
        .then(payload => dispatch({ type: "FETCH_COLLECTION", payload }))
     }
 }
+
+export function removeFromCollection(id){
+    return function(dispatch){
+        // console.log("fetching collection!", user)
+        let token = localStorage.getItem("token")
+       fetch(`http://localhost:3000/api/v1/usersamples/${id}`,{
+           method: "DELETE",
+           headers: {
+            Authorization:`Bear ${token}`
+        },
+       })
+       .then(resp => resp.json())
+       .then(data => dispatch({ type: "FETCH_COLLECTION" }))
+    }
+}

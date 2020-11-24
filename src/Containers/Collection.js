@@ -18,7 +18,7 @@ class Collection extends React.Component{
                 //this.props.user.id
                 console.log(this.props.user.id)
                 // console.log(collection)
-                return filtered.map((el) => <CollectionSample key={el.id} sample={el.sample} creator={el.user}/>)
+                return filtered.map((el) => <CollectionSample key={el.in} sample={el.sample} creator={el.user} id={el.id}/>)
                 // return collection[0].map((el) => console.log(el.sample))
             }
             else{

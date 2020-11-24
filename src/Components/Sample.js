@@ -27,7 +27,11 @@ class Sample extends React.Component{
                     />
                     {/* add button should add the sample to Collection
                         change colection value to true when add is clicked */}
+                {this.props.sample.creator.id === this.props.user.id ? 
+                null
+                :
                     <button onClick={this.localClickHandler}>+</button>
+                }
             </div>
         )
     }
