@@ -8,7 +8,6 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 
-
 const store = createStore(rootReducer, applyMiddleware(thunk))
 // console.log(store)
 // store.dispatch({type: "FETCH_SAMPLES"})

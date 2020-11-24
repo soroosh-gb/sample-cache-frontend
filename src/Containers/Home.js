@@ -12,12 +12,12 @@ class Home extends React.Component{
     }
             
     render(){
-        console.log("home", this.props.user)
+        // console.log("home", this.props.user)
         return(
             <>
                 {this.props.user ?
                 <div>
-                <h1>Home</h1>
+                <h1>Listen and add to your collection!</h1>
                 {this.renderSamples()}
             </div>
             

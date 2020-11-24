@@ -11,31 +11,27 @@ class Collection extends React.Component{
         this.props.fetchCollection()
     }
 
+    // getCollection = () => {
+    //     this.props.fetchCollection()
+    // }
+
         renderCollection = () => {
             let collection = this.props.collection
-            if(collection[0] && collection[0].length > 0){
+            // console.log(collection)
+            // if(collection.length > 0){
                 // console.log(collection[0][0].user.id)
-                let filtered = collection[0].filter(el => el.user.id === this.props.user.id)
+                let filtered = collection.filter(el => el.user.id === this.props.user.id)
                 //this.props.user.id
                 // console.log(this.props.user.id)
                 // console.log(collection)
-                if(filtered){
-                    return filtered.map((el) => <CollectionSample key={el.in} sample={el.sample} creator={el.user} id={el.id}/>)
-                }
-                else{
-                    return(
-                        <>
-                            <Redirect to='/home' />
-                        </>
-                    )
-                }
-            }
-            else{
-               return(
-                <>
-                    <Redirect to='/home' />
-                </>
-            )
+             if(filtered.length > 0){  
+                return filtered.map((el) => <CollectionSample key={el.in} sample={el.sample} creator={el.user} id={el.id}/>)
+            }else {
+                return(
+                    <>
+                    <h3>No sample is added to collection!</h3>
+                    </>
+                )
             }
 
         }
@@ -47,7 +43,8 @@ class Collection extends React.Component{
             <>
                 {this.props.user ?  
                 <div>
-                <h1>Collection</h1>
+                {/* <h1>Collection</h1> */}
+                {/* {this.getCollection()} */}
                 {this.renderCollection()}
                 </div>
                 :
@@ -62,7 +59,7 @@ class Collection extends React.Component{
 
 function mdp(dispatch){
     return { 
-              fetchCollection: () => dispatch(fetchCollectionAction())    
+        fetchCollection: () => dispatch(fetchCollectionAction())    
     }
   }
   

@@ -73,8 +73,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ##### NEED TO FIX ####
 
-- Delete samples from My Samples page
-    - add remove button
-    - on click, send delete request and update dom
+- Render collection after deleting sample √
 
+- Delete samples from My Samples page √
+    - add remove button
+    - on click, delete sample from db and update dom
+
+
+- Fix adding name and genre when creating sample 
+
+
+
+------ Stretch ------
+- Logo
+- Animation
+- Comment
+
+- Artist name changes when moving to collection!
 

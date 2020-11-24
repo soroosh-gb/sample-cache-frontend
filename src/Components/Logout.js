@@ -5,10 +5,7 @@ import { logout } from '../redux/actions.js'
 
 class Logout extends React.Component{
 
-    localLogoutHandler = () => {
-        
-        // localStorage.removeItem("token")
-    }
+
 
     componentDidMount(){
        this.props.logout(this.props.history)
@@ -19,7 +16,7 @@ class Logout extends React.Component{
         console.log(this.props.history)
         return(
             <div>
-                {this.localLogoutHandler}
+                
             </div>
         )
     }

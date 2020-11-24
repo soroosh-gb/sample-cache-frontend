@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addToCollectionAction } from '../redux/actions.js'
+import { removeOwnSample } from '../redux/actions.js'
 import ReactAudioPlayer from 'react-audio-player';
+import CollectionSample from './CollectionSample'
 
 
 class Sample extends React.Component{
@@ -9,6 +11,11 @@ class Sample extends React.Component{
     localClickHandler = () => {
         // console.log(this.props.user.id)
         this.props.addToCollection(this.props.sample.id, this.props.user.id)
+    }
+
+    removeMySample = () => {
+        // console.log(this.props.sample.id)
+        this.props.removeMine(this.props.sample.id)
     }
     render(){
         // console.log(this.props.sample.id)
@@ -28,7 +35,7 @@ class Sample extends React.Component{
                     {/* add button should add the sample to Collection
                         change colection value to true when add is clicked */}
                 {this.props.sample.creator.id === this.props.user.id ? 
-                    <button>Remove My Sample</button>
+                    <button onClick={this.removeMySample}>Remove My Sample</button>
                 :
                     <button onClick={this.localClickHandler}>+</button>
                 }
@@ -42,7 +49,9 @@ class Sample extends React.Component{
 // export default Sample
 // connect(msp, mdp)(Sample)
 function mdp(dispatch){
-    return { addToCollection: (sampleId, userId) => dispatch(addToCollectionAction(sampleId, userId))}
+    return { addToCollection: (sampleId, userId) => dispatch(addToCollectionAction(sampleId, userId)),
+             removeMine: (id) => dispatch(removeOwnSample(id))    
+            }
 }
 
 function msp(state){

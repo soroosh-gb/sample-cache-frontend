@@ -40,6 +40,7 @@ export function createAction(form){
 export function createUser(newUser, history){
     // console.log("new", form)
     let token = localStorage.getItem("token")
+    history.push("/home")
     return function(dispatch) {
         fetch('http://localhost:3000/api/v1/users', {
             method: 'POST',
@@ -51,7 +52,7 @@ export function createUser(newUser, history){
             body: JSON.stringify({user: newUser})
         })  
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "CREATE_USER", payload}, history.push("/home"))) 
+        .then(payload => dispatch({ type: "CREATE_USER", payload})) 
         // .then(data => console.log(data))
         // .then(payload => {
         //     (payload => dispatch({ type: "CREATE_USER", payload: payload}))
@@ -87,7 +88,7 @@ export function loginUser(user, history){
 
 
 export function addToCollectionAction(sampleId, userId){
-    console.log("add", sampleId, userId)
+    // console.log("add", sampleId, userId)
     let token = localStorage.getItem("token")
     return function(dispatch) {
     // return function(dispatch, getstate ) {
@@ -154,5 +155,20 @@ export function removeFromCollection(id){
        })
        .then(resp => resp.json())
        .then(payload => dispatch({ type: "DELETE_USERSAMPLE", payload }))
+    }
+}
+
+export function removeOwnSample(id){
+    return function(dispatch){
+        // console.log("fetching collection!", user)
+        let token = localStorage.getItem("token")
+       fetch(`http://localhost:3000/api/v1/samples/${id}`,{
+           method: "DELETE",
+           headers: {
+            Authorization:`Bear ${token}`
+        },
+       })
+       .then(resp => resp.json())
+       .then(payload => dispatch({ type: "REMOVE_OWN_SAMPLE", payload }))
     }
 }

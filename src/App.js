@@ -55,13 +55,15 @@ class App extends React.Component{
 }
 
 function mdp(dispatch){
-  return { fetchSamples: () => dispatch(fetchSamplesAction()),
+  return { fetchSamples: () => dispatch(fetchSamplesAction())
             // fetchCollection: () => dispatch(fetchCollectionAction())    
   }
 }
 
 function msp(state){
-  return { user: state.user}
+  return { user: state.user,
+            // collection: state.collection
+          }
   // console.log(state)
 }
 

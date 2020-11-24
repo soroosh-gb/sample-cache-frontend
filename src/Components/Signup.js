@@ -37,7 +37,7 @@ class Signup extends React.Component{
        
 
     render(){
-    console.log(this.props.history)
+    // console.log(this.props.history)
         return (
             <div>
                 <h1>Signup</h1>

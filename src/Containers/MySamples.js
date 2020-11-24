@@ -1,7 +1,7 @@
 import React from 'react'
 import NewSampleForm from '../Components/NewSampleForm'
 import { connect } from 'react-redux'
-import { mySamples } from '../redux/actions.js'
+// import { mySamples } from '../redux/actions.js'
 import { Redirect } from 'react-router-dom'
 import Sample from '../Components/Sample'
 
@@ -24,14 +24,14 @@ class MySamples extends React.Component{
     }
 
     render(){
-        console.log(this.props.api)
-        console.log(this.props.user.id)
+        // console.log(this.props.api)
+        // console.log(this.props.user.id)
         // console.log(this.props.user.user.id)
         return (
             <>
                 {this.props.user ? 
                     <div>
-                        <h1>my samples</h1>
+                        <h1>Create sample!</h1>
                         {/* {this.fetchMySamples()} */}
                         <button onClick={this.clickHandler}>New sample</button>
                         {this.state.showForm ? <NewSampleForm /> : null}
@@ -55,7 +55,7 @@ function msp(state){
     return { api: state.api,
             user: state.user,
             collection: state.collection,
-            mySamples: state.mySamples,  
+            // mySamples: state.mySamples,  
         }
 }
 export default connect(msp,null)(MySamples)
