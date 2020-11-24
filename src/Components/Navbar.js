@@ -14,6 +14,11 @@ function Navbar(){
 
             <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/signup">Sign Up</NavLink>
 
+            <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/login">Log In</NavLink>
+
+            <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/logout">Log out</NavLink>
+
+
         </div>
     )
 }

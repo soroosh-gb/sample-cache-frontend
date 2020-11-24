@@ -1,5 +1,8 @@
 import React from 'react'
 import NewSampleForm from '../Components/NewSampleForm'
+import { connect } from 'react-redux'
+import { mySamples } from '../redux/actions.js'
+import { Redirect } from 'react-router-dom'
 
 
 class MySamples extends React.Component{
@@ -8,47 +11,45 @@ class MySamples extends React.Component{
         showForm: false,
     }
 
+    // fetchMySamples = () => {
+    //     this.props.mySamples(this.props.user.user.id)
+    // }
+
+  
+
     clickHandler = () => {
         this.setState(prevstate => ({showForm: !prevstate.showForm}))
     }
 
     render(){
+        // console.log(this.props.user.user.id)
         return (
-            <div>
-                <button onClick={this.clickHandler}>New sample</button>
-                {this.state.showForm ? <NewSampleForm /> : null}
-            </div>
+            <>
+                {this.props.user ? 
+                    <div>
+                        <h1>my samples</h1>
+                        {/* {this.fetchMySamples()} */}
+                        <button onClick={this.clickHandler}>New sample</button>
+                        {this.state.showForm ? <NewSampleForm /> : null}
+                    </div>
+                :
+                <Redirect to="/login"/>
+            }
+            </>
+
         )
     }
   
 }
 
-export default MySamples
-
-
-// state = {
-//     selectedFile: null
+// function mdp(dispatch){
+//     return {mySamples: (id)=>dispatch(mySamples(id))}
 // }
 
-// fileSelectHandler = (e) => {
-//     this.setState({
-//         selectedFile: e.target.files[0]
-//     }) 
-// }
-
-// fileUploadHandler = () =>  {
-//     // fetch here
-//     fetch("url to create sample")
-//     .then(resp => resp.json())
-//     .then(data => console.log(data))
-// }
-
-// render(){
-//     return(
-//         <div>
-//             <h1>My Samples</h1>
-//             <input type="file" onChange={this.fileSelectHandler}/>
-//             <button onClick={this.fileUploadHandler}>Upload</button>
-//         </div>
-//     )
-// }
+function msp(state){
+    return { api: state.api,
+            user: state.user,
+            mySamples: state.mySamples,  
+        }
+}
+export default connect(msp,null)(MySamples)

@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { createAction } from '../redux/actions.js'
 
 
 class NewSampleForm extends React.Component{
@@ -9,6 +11,7 @@ class NewSampleForm extends React.Component{
         name: "",
         genre: "",
         collection: false,
+        // creator: this.props.user,
     }
 
     changeHandler = (e) => {
@@ -23,7 +26,7 @@ class NewSampleForm extends React.Component{
         //  console.dir(e.target.value)
     }
 
-    submitHandler = (e) => {
+    localSubmitHandler = (e) => {
         e.preventDefault()
         const form = new FormData()
         form.append("audio_file", this.state.audio_file)
@@ -31,21 +34,24 @@ class NewSampleForm extends React.Component{
         form.append("name", this.state.name)
         form.append("genre", this.state.genre)
         form.append("collection", this.state.collection)
+        // form.append("creator", this.state.creator.id)
 
-        fetch("http://localhost:3000/api/v1/samples", {
-            method: "POST",
-            body: form
-        })
-        .then(resp => resp.json())
-        .then(sample => console.log(sample))
+        this.props.submitHandler(form, this.props.user)
+
+        // fetch("http://localhost:3000/api/v1/samples", {
+        //     method: "POST",
+        //     body: form
+        // })
+        // .then(resp => resp.json())
+        // .then(sample => console.log(sample))
     }
 
     render(){
-        console.log(this.state)
+        // console.log("IN FORM",this.props.user)
         return(
             <div className='from'>
                 <h1>New Sample Form</h1>
-                <form onSubmit={this.submitHandler}>
+                <form onSubmit={this.localSubmitHandler}>
                     
                     <lable>Audio Upload</lable>
                     <input type="file" name="audio_file" onChange={this.changeHandler}/>
@@ -65,4 +71,12 @@ class NewSampleForm extends React.Component{
     }
 }
 
-export default NewSampleForm
+function mdp(dispatch){
+    return {submitHandler: (form)=>dispatch(createAction(form))}
+}
+
+function msp(state){
+    return { user: state.user}
+    // console.log(state)
+  }
+export default connect(msp, mdp)(NewSampleForm)

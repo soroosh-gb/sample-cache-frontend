@@ -1,10 +1,12 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { createUser } from '../redux/actions.js'
 
 class Signup extends React.Component{
 
     state = {
         username: "",
-        password_digest: "",
+        password: "",
     }
 
     changeHandler = (e) => {
@@ -14,18 +16,20 @@ class Signup extends React.Component{
         })
     }
 
-    submitHandler = (e) => {
+    localSubmitHandler = (e) => {
         e.preventDefault()
-        fetch('http://localhost:3000/api/v1/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        })  
-        .then(resp => resp.json())
-        .then(user => console.log(user))  
+        console.log(this.state)
+        this.props.submitHandler(this.state)
+        // fetch('http://localhost:3000/api/v1/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         Accept: 'application/json'
+        //     },
+        //     body: JSON.stringify(this.state)
+        // })  
+        // .then(resp => resp.json())
+        // .then(user => console.log(user))  
         // need to update the user key in store state with new user
     }
        
@@ -34,15 +38,20 @@ class Signup extends React.Component{
         return (
             <div>
                 <h1>Signup</h1>
-                    <form onSubmit={this.submitHandler}>
+                    <form onSubmit={this.localSubmitHandler}>
                         <input type="test" name="username" placeholder="username" onChange={this.changeHandler}/>
-                        <input  type="password" name="password_digest" placeholder="password" onChange={this.changeHandler}/>
+                        <input  type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
                         <input type="submit"/>
                     </form>
+                     
             </div>
         )
     }
    
 }
 
-export default Signup
+function mdp(dispatch){
+    return {submitHandler: (newUser)=>dispatch(createUser(newUser))}
+}
+
+export default connect(null, mdp)(Signup)
