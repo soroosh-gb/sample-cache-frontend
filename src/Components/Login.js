@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions.js'
-import { toHome } from '../redux/actions.js'
+
 
 class Login extends React.Component{
 
@@ -20,9 +20,8 @@ class Login extends React.Component{
 
     localSubmitHandler = (e) => { 
         e.preventDefault()
-        this.props.toHome(this.props.history)
-        this.props.submitHandler(this.state)
-        // history.push('/home', { some: 'state' });
+        this.props.submitHandler(this.state, this.props.history)
+       
      
     }
 
@@ -45,8 +44,7 @@ class Login extends React.Component{
 
 function mdp(dispatch){
     return {
-        submitHandler: (user) => dispatch(loginUser(user)),
-        toHome: (history) => dispatch(toHome(history))
+        submitHandler: (user, his) => dispatch(loginUser(user, his))
             }
 }
 

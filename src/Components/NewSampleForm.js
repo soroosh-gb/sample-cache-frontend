@@ -37,6 +37,13 @@ class NewSampleForm extends React.Component{
         // form.append("creator", this.state.creator.id)
 
         this.props.submitHandler(form, this.props.user)
+        this.setState({
+            audio_file: {},
+            image_file: {},
+            name: "",
+            genre: "",
+            collection: false,
+        })
 
         // fetch("http://localhost:3000/api/v1/samples", {
         //     method: "POST",
@@ -76,7 +83,10 @@ function mdp(dispatch){
 }
 
 function msp(state){
-    return { user: state.user}
+    return { user: state.user,
+             api: state.api
+            }
+
     // console.log(state)
   }
 export default connect(msp, mdp)(NewSampleForm)

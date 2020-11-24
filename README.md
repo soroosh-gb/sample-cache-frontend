@@ -72,6 +72,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ##### NEED TO FIX ####
-- home need manual refresh after user is logged out!!!
+
+- Delete samples from My Samples page
+    - add remove button
+    - on click, send delete request and update dom
 
 

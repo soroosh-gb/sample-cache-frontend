@@ -54,6 +54,7 @@ class MySamples extends React.Component{
 function msp(state){
     return { api: state.api,
             user: state.user,
+            collection: state.collection,
             mySamples: state.mySamples,  
         }
 }

@@ -57,6 +57,10 @@ function collectionReducer(state = defaultState.collection, action){
         case "FETCH_COLLECTION":
             console.log("FETCHiiiiing COLLECTION", action.payload)
             return [state = action.payload]
+        case "DELETE_USERSAMPLE":
+            console.log("deleting", action.payload)
+            let filtered = state.filter(sample => sample.id !== action.payload.id)
+            return {...state, collection: filtered}
         default:
             return state
     }

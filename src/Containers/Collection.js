@@ -14,23 +14,35 @@ class Collection extends React.Component{
         renderCollection = () => {
             let collection = this.props.collection
             if(collection[0] && collection[0].length > 0){
+                // console.log(collection[0][0].user.id)
                 let filtered = collection[0].filter(el => el.user.id === this.props.user.id)
                 //this.props.user.id
-                console.log(this.props.user.id)
+                // console.log(this.props.user.id)
                 // console.log(collection)
-                return filtered.map((el) => <CollectionSample key={el.in} sample={el.sample} creator={el.user} id={el.id}/>)
-                // return collection[0].map((el) => console.log(el.sample))
+                if(filtered){
+                    return filtered.map((el) => <CollectionSample key={el.in} sample={el.sample} creator={el.user} id={el.id}/>)
+                }
+                else{
+                    return(
+                        <>
+                            <Redirect to='/home' />
+                        </>
+                    )
+                }
             }
             else{
-                // return "No sample added!"
-                {<h1>"No sample added!"</h1>}
+               return(
+                <>
+                    <Redirect to='/home' />
+                </>
+            )
             }
 
         }
     
     render(){
         // console.log(this.props.collection, this.props.user.user)
-        console.log(this.props.user)
+        // console.log(this.props.user)
         return(
             <>
                 {this.props.user ?  
@@ -58,7 +70,8 @@ function msp(state){
     return { 
         api: state.api,
         user: state.user,
-        collection: state.collection}
+        collection: state.collection,
+        }
   }
 
 export default connect(msp,mdp)(Collection)

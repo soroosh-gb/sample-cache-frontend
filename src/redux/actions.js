@@ -37,7 +37,7 @@ export function createAction(form){
 
 }
 
-export function createUser(newUser){
+export function createUser(newUser, history){
     // console.log("new", form)
     let token = localStorage.getItem("token")
     return function(dispatch) {
@@ -51,7 +51,7 @@ export function createUser(newUser){
             body: JSON.stringify({user: newUser})
         })  
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "CREATE_USER", payload})) 
+        .then(payload => dispatch({ type: "CREATE_USER", payload}, history.push("/home"))) 
         // .then(data => console.log(data))
         // .then(payload => {
         //     (payload => dispatch({ type: "CREATE_USER", payload: payload}))
@@ -64,14 +64,11 @@ export function createUser(newUser){
 
 }
 
-export function loginUser(user){
-    // console.log("new", form)
-    // return function(dispatch) {
-    //     dispatch({ type:"LOGIN_USER", payload: user})
-    // }
+export function loginUser(user, history){
+   
     return function(dispatch) {
         
-        // history.push("/home")
+        
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -81,21 +78,9 @@ export function loginUser(user){
             body: JSON.stringify({user: user})
         })  
         .then(resp => resp.json())
-        .then(payload => dispatch({ type: "LOGIN_USER", payload}))
+        .then(payload => dispatch({ type: "LOGIN_USER", payload }, history.push('/home')))
         
     }
-    //     fetch('http://localhost:3000/api/v1/profile', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Accept: 'application/json'
-    //         },
-    //         body: JSON.stringify(user)
-    //     })  
-    //     .then(resp => resp.json())
-    //     .then(payload => dispatch({ type: "Login_USER", payload: payload})) 
-    // }
-
 }
 
 
@@ -131,8 +116,8 @@ export function addToCollectionAction(sampleId, userId){
 export function logout(history){
     return function(dispatch){
         // console.log("here",history)
-        history.push("/login")
-        dispatch({ type: "LOGOUT" })
+        
+        dispatch({ type: "LOGOUT" }, history.push("/login"))
     }
 }
 
@@ -145,20 +130,7 @@ export function logout(history){
 //     }
 // }
 
-export function toHome(history){
-    return function(dispatch){
-        console.log("going home!",history)
-        history.push("/home")
-        // dispatch({ type: "LOGOUT" })
-    }
-}
 
-export function signupToHome(history){
-    return function(dispatch) {
-        // console.log("sih", history)
-        history.push("/home")
-    }
-}
 
 
 export function fetchCollectionAction(){
@@ -181,6 +153,6 @@ export function removeFromCollection(id){
         },
        })
        .then(resp => resp.json())
-       .then(data => dispatch({ type: "FETCH_COLLECTION" }))
+       .then(payload => dispatch({ type: "DELETE_USERSAMPLE", payload }))
     }
 }
