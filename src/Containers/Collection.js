@@ -13,14 +13,24 @@ class Collection extends React.Component{
 
         renderCollection = () => {
             let collection = this.props.collection
-            // console.log(collection)
-            return collection[0].map((el) => <CollectionSample key={el.id} sample={el.sample} creator={el.user}/>)
-            // return collection[0].map((el) => console.log(el.sample))
+            if(collection[0] && collection[0].length > 0){
+                let filtered = collection[0].filter(el => el.user.id === this.props.user.id)
+                //this.props.user.id
+                console.log(this.props.user.id)
+                // console.log(collection)
+                return filtered.map((el) => <CollectionSample key={el.id} sample={el.sample} creator={el.user}/>)
+                // return collection[0].map((el) => console.log(el.sample))
+            }
+            else{
+                // return "No sample added!"
+                {<h1>"No sample added!"</h1>}
+            }
+
         }
     
     render(){
         // console.log(this.props.collection, this.props.user.user)
-        console.log(this.props.collectiion)
+        console.log(this.props.user)
         return(
             <>
                 {this.props.user ?  
@@ -36,12 +46,7 @@ class Collection extends React.Component{
         )
     }
 }
-// if token! send a fetch to usersamples and  get all the samples which was liked by this user
-// function mdp(dispatch){
-//     return {
-//         fetchCollection: (user) => dispatch(fetchCollection(user))
-//             }
-// }
+
 
 function mdp(dispatch){
     return { 
@@ -56,5 +61,5 @@ function msp(state){
         collection: state.collection}
   }
 
-export default connect(msp, mdp)(Collection)
+export default connect(msp,mdp)(Collection)
 

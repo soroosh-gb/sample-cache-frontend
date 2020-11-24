@@ -3,6 +3,7 @@ import NewSampleForm from '../Components/NewSampleForm'
 import { connect } from 'react-redux'
 import { mySamples } from '../redux/actions.js'
 import { Redirect } from 'react-router-dom'
+import Sample from '../Components/Sample'
 
 
 class MySamples extends React.Component{
@@ -11,9 +12,10 @@ class MySamples extends React.Component{
         showForm: false,
     }
 
-    // fetchMySamples = () => {
-    //     this.props.mySamples(this.props.user.user.id)
-    // }
+   renderMySamples = () => {
+       let justMySamples = this.props.api.filter(el => el.creator.id === this.props.user.id)
+       return justMySamples.map((el) => <Sample key={el.i} sample={el}/>)
+   }
 
   
 
@@ -22,6 +24,8 @@ class MySamples extends React.Component{
     }
 
     render(){
+        console.log(this.props.api)
+        console.log(this.props.user.id)
         // console.log(this.props.user.user.id)
         return (
             <>
@@ -31,6 +35,7 @@ class MySamples extends React.Component{
                         {/* {this.fetchMySamples()} */}
                         <button onClick={this.clickHandler}>New sample</button>
                         {this.state.showForm ? <NewSampleForm /> : null}
+                        {this.renderMySamples()}
                     </div>
                 :
                 <Redirect to="/login"/>

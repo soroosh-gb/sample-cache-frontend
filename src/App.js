@@ -44,7 +44,7 @@ class App extends React.Component{
            <Route path="/home" render={() => <Home />} />
            <Route path="/collection" render={() => <Collection />} />
            <Route path="/mysamples" render={() => <MySamples />} />
-           <Route path="/signup" render={() => <Signup />} />
+           <Route path="/signup" render={(routerProps) => <Signup {...routerProps}/>} />
            <Route path="/login" render={(routerProps) => <Login {...routerProps} />}/>
            <Route path="/logout" render={(routerProps) => <Logout {...routerProps} />} />
        </Switch>

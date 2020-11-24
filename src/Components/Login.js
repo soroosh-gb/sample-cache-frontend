@@ -18,8 +18,7 @@ class Login extends React.Component{
 
  
 
-    localSubmitHandler = (e) => {
-        
+    localSubmitHandler = (e) => { 
         e.preventDefault()
         this.props.toHome(this.props.history)
         this.props.submitHandler(this.state)

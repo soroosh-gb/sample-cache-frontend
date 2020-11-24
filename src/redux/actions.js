@@ -100,6 +100,7 @@ export function loginUser(user){
 
 
 
+
 export function addToCollectionAction(sampleId, userId){
     console.log("add", sampleId, userId)
     let token = localStorage.getItem("token")
@@ -151,6 +152,14 @@ export function toHome(history){
         // dispatch({ type: "LOGOUT" })
     }
 }
+
+export function signupToHome(history){
+    return function(dispatch) {
+        // console.log("sih", history)
+        history.push("/home")
+    }
+}
+
 
 export function fetchCollectionAction(){
     return function(dispatch){

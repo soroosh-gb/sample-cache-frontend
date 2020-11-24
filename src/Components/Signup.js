@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createUser } from '../redux/actions.js'
+import { signupToHome } from '../redux/actions.js'
 
 class Signup extends React.Component{
 
@@ -18,7 +19,8 @@ class Signup extends React.Component{
 
     localSubmitHandler = (e) => {
         e.preventDefault()
-        console.log(this.state)
+        this.props.toHome(this.props.history)
+        // console.log(this.state)
         this.props.submitHandler(this.state)
         // fetch('http://localhost:3000/api/v1/users', {
         //     method: 'POST',
@@ -35,6 +37,7 @@ class Signup extends React.Component{
        
 
     render(){
+    console.log(this.props.history)
         return (
             <div>
                 <h1>Signup</h1>
@@ -51,7 +54,15 @@ class Signup extends React.Component{
 }
 
 function mdp(dispatch){
-    return {submitHandler: (newUser)=>dispatch(createUser(newUser))}
+    return {
+            submitHandler: (newUser)=>dispatch(createUser(newUser)),
+            toHome: (history) => dispatch(signupToHome(history))
+    }
+
 }
 
-export default connect(null, mdp)(Signup)
+function msp(state){
+    return { user: state.user}
+  }
+
+export default connect(msp, mdp)(Signup)
