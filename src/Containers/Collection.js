@@ -2,14 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CollectionSample from '../Components/CollectionSample'
 import { Redirect } from 'react-router-dom'
-import { fetchCollectionAction } from '../redux/actions.js'
+// import { fetchCollectionAction } from '../redux/actions.js'
 
 
 class Collection extends React.Component{
 
-    componentDidMount(){
-        this.props.fetchCollection()
-    }
+    // componentDidMount(){
+    //     this.props.fetchCollection()
+    // }
 
     // getCollection = () => {
     //     this.props.fetchCollection()
@@ -59,7 +59,7 @@ class Collection extends React.Component{
 
 function mdp(dispatch){
     return { 
-        fetchCollection: () => dispatch(fetchCollectionAction())    
+        // fetchCollection: () => dispatch(fetchCollectionAction())    
     }
   }
   

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react' 
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Home from './Containers/Home'
 import MySamples from './Containers/MySamples'
 import Collection from './Containers/Collection'
@@ -8,28 +8,36 @@ import Navbar from './Components/Navbar'
 import Signup from './Components/Signup'
 import Login from './Components/Login'
 import { connect } from 'react-redux'
-import { fetchSamplesAction } from './redux/actions';
+import { setUserAction } from './redux/actions';
 import Logout from './Components/Logout'
-// import { fetchCollectionAction } from './redux/actions.js'
+import { fetchCollectionAction } from './redux/actions.js'
+import { fetchSamplesAction } from './redux/actions';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee, faHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faHeart, faRss, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faCheckSquare, faCoffee, faHeart, faTrashAlt)
 
 class App extends React.Component{
 
   componentDidMount(){
-    // console.log(this.history)
-    // const token = localStorage.getItem("token")
-    // if (token) {
-    //   console.log(token)
-    //   console.log("logged in")
-      this.props.fetchSamples()
-      // this.props.fetchCollection()
-    // }
-    // else{
-    //   console.log("not logged in")
-    // }
+    this.props.fetchSamples()
+    
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch("http://localhost:3000/api/v1/profile", {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}`},
+      })
+      .then(resp => resp.json())
+      .then(data => this.props.setUser(data.user))
+
+      
+      this.props.fetchCollection()
+    }
+    else{
+      <Redirect to="/login"/>
+      // this.props.history.push('/login')
+    }
     
   }
 
@@ -38,6 +46,7 @@ class App extends React.Component{
 
   render(){
     console.log(this.props.user)
+    // console.log(history)
     return (
       <div>
         {/* <BrowserRouter > */}
@@ -57,14 +66,18 @@ class App extends React.Component{
 }
 
 function mdp(dispatch){
-  return { fetchSamples: () => dispatch(fetchSamplesAction())
-            // fetchCollection: () => dispatch(fetchCollectionAction())    
+  return { setUser: (user) => dispatch(setUserAction(user)),
+           fetchSamples: () => dispatch(fetchSamplesAction()),
+           fetchCollection: () => dispatch(fetchCollectionAction()) 
   }
 }
 
+
 function msp(state){
   return { user: state.user,
-            // collection: state.collection
+            collection: state.collection,
+            api: state.api,
+            addedToCollecttion: state.addedToCollecttion
           }
   // console.log(state)
 }

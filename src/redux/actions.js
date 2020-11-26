@@ -24,7 +24,7 @@ export function createAction(form){
             //     Accept: 'application/json'
             // },
             headers: {
-                Authorization:`Bear ${token}`
+                Authorization:`Bearer ${token}`
             },
             body: form
         })
@@ -89,6 +89,21 @@ export function loginUser(loginResponse, history){
     }
 }
 
+export function setError(message){
+   
+    return function(dispatch) { 
+       dispatch({ type: "LOGIN_ERROR", message})     
+    }
+}
+
+export function signupError(message){
+   
+    return function(dispatch) { 
+       dispatch({ type: "SIGNUP_ERROR", message})     
+    }
+}
+
+
 
 
 
@@ -104,7 +119,7 @@ export function addToCollectionAction(sampleId, userId){
             //     Accept: 'application/json'
             // },
             headers: {
-                Authorization:`Bear ${token}`,
+                Authorization:`Bearer ${token}`,
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
             },
@@ -156,7 +171,7 @@ export function removeFromCollection(id){
        fetch(`http://localhost:3000/api/v1/usersamples/${id}`,{
            method: "DELETE",
            headers: {
-            Authorization:`Bear ${token}`
+            Authorization:`Bearer ${token}`
         },
        })
        .then(resp => resp.json())
@@ -171,7 +186,7 @@ export function removeOwnSample(id){
        fetch(`http://localhost:3000/api/v1/samples/${id}`,{
            method: "DELETE",
            headers: {
-            Authorization:`Bear ${token}`
+            Authorization:`Bearer ${token}`
         },
        })
        .then(resp => resp.json())
@@ -180,15 +195,21 @@ export function removeOwnSample(id){
 }
 
 
-export function AddingAction(sample_id){
+export function addingAction(sample_id){
     return function(dispatch) { 
        dispatch({ type: "ADDED", sample_id})     
     }
 }
 
 
-export function RemovingAction(sample_id){
+export function removingAction(sample_id){
     return function(dispatch) { 
        dispatch({ type: "REMOVED", sample_id})     
+    }
+}
+
+export function setUserAction(user){
+    return function(dispatch){
+        dispatch({ type: "SET_USER", user})
     }
 }

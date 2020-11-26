@@ -29,17 +29,17 @@ class MySamples extends React.Component{
         // console.log(this.props.user.user.id)
         return (
             <>
-                {this.props.user ? 
-                    <div>
-                        <h1>Create sample!</h1>
-                        {/* {this.fetchMySamples()} */}
-                        <button onClick={this.clickHandler}>New sample</button>
-                        {this.state.showForm ? <NewSampleForm /> : null}
-                        {this.renderMySamples()}
-                    </div>
+                {/* {this.props.api.length === 0 ? 
+                    <h1>Loading samples...</h1>
                 :
-                <Redirect to="/login"/>
-            }
+                <>                    */}
+                    <h1>Create sample!</h1>
+                    {/* {this.fetchMySamples()} */}
+                    <button onClick={this.clickHandler}>New sample</button>
+                    {this.state.showForm ? <NewSampleForm /> : null}
+                    {this.renderMySamples()}
+               {/* </>  */}
+            {/* } */}
             </>
 
         )

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { loginUser } from '../redux/actions.js'
-import ErrorMessage  from './ErrorMessage' 
+import { loginUser, setError } from '../redux/actions.js'
+
 
 
 class Login extends React.Component{
@@ -19,6 +19,12 @@ class Login extends React.Component{
 
     localSubmitHandler = (e) => {
         e.preventDefault()
+                this.setState({
+            username: "",
+            password: "",
+        })
+
+
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -35,9 +41,14 @@ class Login extends React.Component{
         }
         else if(loginResponse.message){
             // console.log(loginResponse.message)
-            this.noUser(loginResponse.message)
-            
+
+            this.noUser(loginResponse.message)  
         }
+        // e.preventDefault()
+        // this.setState({
+        //     username: "",
+        //     password: "",
+        // })
 
     })
    
@@ -47,9 +58,9 @@ class Login extends React.Component{
         this.props.submitHandler(loginResponse, history)
     }
 
-    noUser = (message) => {
-        console.log("sdf")
-        return <ErrorMessage meesage={message}/>
+    noUser = (message, history) => {
+        this.props.error(message)
+
     }
     
 
@@ -63,9 +74,7 @@ class Login extends React.Component{
                     <input  type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
                     <input type="submit"/>
                 </form>
-                <br></br>
-                {/* <ErrorMessage /> */}
-                {/* <a onClick={this.clickHandler} href="/login/create">Create Account</a> */}
+                <h2>{this.props.errorMessage}</h2>
             </div>
         )
     }
@@ -73,12 +82,15 @@ class Login extends React.Component{
 
 function mdp(dispatch){
     return {
-        submitHandler: (loginResponse, history) => dispatch(loginUser(loginResponse, history))
+        submitHandler: (loginResponse, history) => dispatch(loginUser(loginResponse, history)),
+        error: (message) => dispatch(setError(message))
             }
 }
 
 function msp(state){
-    return { user: state.user}
+    return { user: state.user,
+             errorMessage: state.errorMessage,
+            }
   }
 
 export default connect(msp, mdp)(Login)

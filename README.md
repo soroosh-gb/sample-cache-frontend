@@ -104,3 +104,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 - Artist name changes when moving to collection!
 
+--------------------------------------------
+
+
+Thursday;
+    -   Ensure auth functionality √
+        -   User stays logged-in after refresh √
+        -   Recieve errors upon wrong log in info √
+
+
+Friday;
+    -   Add Message feature
+
+
+Saturday;
+    -   Search feature
+
+Sunday;
+    -   Styling
+    -   Apply fontAwsome
+
+Monday;
+    -   Styling
+
+Tuesday;
+    -   Reccord demo video

@@ -6,8 +6,9 @@ const defaultState = {
     api: [],
     user: null,
     collection: [],
-    mySamples: [],
+    // mySamples: [],
     addedToCollecttion: [],
+    errorMessage: "",
 }
 
 
@@ -49,6 +50,9 @@ function userReducer(state = defaultState.user, action){
             console.log("Login user", action.loginResponse)
             localStorage.setItem("token",action.loginResponse.jwt)
             return action.loginResponse.user
+
+        case "SET_USER":
+            return action.user
             
         case "LOGOUT":
             console.log("OUTOUTOUT")
@@ -89,15 +93,18 @@ function collectionReducer(state = defaultState.collection, action){
 }
 
 
-// function mySamplesReducer(state = defaultState.api, action){
-//     switch (action.type) {
-//         case "MY_SAMPLES":
-//             // console.log("MY SAMPLES", action.payload)
-//             return [...state, action.payload]
-//         default:
-//             return state
-//     }
-// }
+function errorMessageReducer(state = defaultState.errorMessage, action){
+    switch (action.type) {
+
+        case "LOGIN_ERROR":
+            return state = action.message
+
+        case "SIGNUP_ERROR":
+            return state = action.message
+        default:
+            return state
+    }
+}
 
 function addedToCollecttionReducer(state = defaultState.addedToCollecttion, action){
     switch (action.type) {
@@ -122,7 +129,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     collection: collectionReducer,
     addedToCollecttion: addedToCollecttionReducer,
-    // mySamples: mySamplesReducer,
+    errorMessage: errorMessageReducer,
 })
 
 export default rootReducer;

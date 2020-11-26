@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux'
-import { removeFromCollection, RemovingAction } from '../redux/actions'
+import { removeFromCollection, removingAction } from '../redux/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CollectionSample extends React.Component{
@@ -39,7 +39,7 @@ class CollectionSample extends React.Component{
 
 function mdp(dispatch){
     return { remove: (id) => dispatch(removeFromCollection(id)),
-             removing: (id) => dispatch(RemovingAction(id))        
+             removing: (id) => dispatch(removingAction(id))        
     }
 }
 

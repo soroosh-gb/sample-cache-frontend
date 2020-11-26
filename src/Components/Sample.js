@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addToCollectionAction } from '../redux/actions.js'
 import { removeOwnSample } from '../redux/actions.js'
-import { AddingAction } from '../redux/actions.js'
+import { addingAction } from '../redux/actions.js'
 import ReactAudioPlayer from 'react-audio-player';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,7 +43,7 @@ class Sample extends React.Component{
                     />
                 
                 {this.props.sample.creator.id === this.props.user.id ? 
-                    <button onClick={this.removeMySample}>Remove My Sample</button>
+                    <button onClick={this.removeMySample}><FontAwesomeIcon icon="trash" size="lg" /></button>
                 :
                 // <button onClick={this.localClickHandler}>+</button>
                     this.props.addedToCollecttion.includes(this.props.sample.id) ?
@@ -73,7 +73,7 @@ class Sample extends React.Component{
 function mdp(dispatch){
     return { addToCollection: (sampleId, userId) => dispatch(addToCollectionAction(sampleId, userId)),
              removeMine: (id) => dispatch(removeOwnSample(id)),
-             adding: (id) => dispatch(AddingAction(id)) 
+             adding: (id) => dispatch(addingAction(id)) 
             }
 }
 
