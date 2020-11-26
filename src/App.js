@@ -11,8 +11,10 @@ import { connect } from 'react-redux'
 import { fetchSamplesAction } from './redux/actions';
 import Logout from './Components/Logout'
 // import { fetchCollectionAction } from './redux/actions.js'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCheckSquare, faCoffee, faHeart, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-
+library.add(faCheckSquare, faCoffee, faHeart, faTrashAlt)
 
 class App extends React.Component{
 
@@ -38,7 +40,7 @@ class App extends React.Component{
     console.log(this.props.user)
     return (
       <div>
-        <BrowserRouter >
+        {/* <BrowserRouter > */}
         <Navbar />
         <Switch>
            <Route path="/home" render={() => <Home />} />
@@ -48,7 +50,7 @@ class App extends React.Component{
            <Route path="/login" render={(routerProps) => <Login {...routerProps} />}/>
            <Route path="/logout" render={(routerProps) => <Logout {...routerProps} />} />
        </Switch>
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
       </div>
     );
   }

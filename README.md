@@ -73,14 +73,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ##### NEED TO FIX ####
 
-- Render collection after deleting sample √
-
-- Delete samples from My Samples page √
-    - add remove button
-    - on click, delete sample from db and update dom
-
 
 - Fix adding name and genre when creating sample 
+
+- Clean up auth!
+    - If NOT logged in;
+        - only show sign up and log on in the navbar
+        
+    - If logged in;
+        -  dont show log in and signup
+        - show log out, home, collection, my samples
+
+- validations 
+    -   password and username presence
+
+
+- validation for samples
+    - only .mp3
+    - only image
+
+- Remove "+" button if the sample already exist in collection
 
 
 
@@ -88,6 +100,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Logo
 - Animation
 - Comment
+- Styling
 
 - Artist name changes when moving to collection!
 

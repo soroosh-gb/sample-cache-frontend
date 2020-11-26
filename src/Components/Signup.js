@@ -21,20 +21,29 @@ class Signup extends React.Component{
         e.preventDefault()
         // this.props.toHome(this.props.history)
         // console.log(this.state)
-        this.props.submitHandler(this.state, this.props.history)
-        // fetch('http://localhost:3000/api/v1/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         Accept: 'application/json'
-        //     },
-        //     body: JSON.stringify(this.state)
-        // })  
-        // .then(resp => resp.json())
+        // this.props.submitHandler(this.state, this.props.history)
+        let token = localStorage.getItem("token")
+        fetch('http://localhost:3000/api/v1/users', {
+            method: 'POST',
+            headers: {
+                Authorization:`Bear ${token}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({user: this.state})
+        })  
+        .then(resp => resp.json())
         // .then(user => console.log(user))  
+        .then(signupResponse => {
+            if(signupResponse.user){
+                this.props.submitHandler(signupResponse, this.props.history)
         // need to update the user key in store state with new user
-    }
-       
+        }
+        else{
+            console.log("nope")
+        }
+    })
+}
 
     render(){
     // console.log(this.props.history)
@@ -55,7 +64,7 @@ class Signup extends React.Component{
 
 function mdp(dispatch){
     return {
-            submitHandler: (newUser, history)=>dispatch(createUser(newUser, history)),
+            submitHandler: (signupResponse, history)=>dispatch(createUser(signupResponse, history))
             // toHome: (history) => dispatch(signupToHome(history))
     }
 

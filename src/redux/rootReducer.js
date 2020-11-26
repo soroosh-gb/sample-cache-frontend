@@ -7,6 +7,7 @@ const defaultState = {
     user: null,
     collection: [],
     mySamples: [],
+    addedToCollecttion: [],
 }
 
 
@@ -34,19 +35,25 @@ function apiReducer(state = defaultState.api, action){
 function userReducer(state = defaultState.user, action){
     switch (action.type) {
         case "CREATE_USER":
-            // console.log("Create user", action)
-            localStorage.setItem("token",action.payload.jwt)
-            return action.payload.user
+            console.log("Create user", action.signupResponse)
+            localStorage.setItem("token",action.signupResponse.jwt)
+            return action.signupResponse.user
 
-        case "LOGIN_USER":
+        // case "LOGIN_USER":
         // console.log("Login user", action.payload.user)
-        localStorage.setItem("token",action.payload.jwt)
-        return action.payload.user
-
+        // if(action.payload.jwt){
+        //     localStorage.setItem("token",action.payload.jwt)
+        //     return action.payload.user
+        // }
+        case "LOGIN_USER":
+            console.log("Login user", action.loginResponse)
+            localStorage.setItem("token",action.loginResponse.jwt)
+            return action.loginResponse.user
+            
         case "LOGOUT":
             console.log("OUTOUTOUT")
             localStorage.removeItem("token")
-            return [state = null]
+            return state = null
             // {
             //     user: null,
             //     // collection: [],
@@ -92,6 +99,19 @@ function collectionReducer(state = defaultState.collection, action){
 //     }
 // }
 
+function addedToCollecttionReducer(state = defaultState.addedToCollecttion, action){
+    switch (action.type) {
+        case "ADDED" :
+            console.log(action)
+            return [...state, action.sample_id]
+
+            case "REMOVED" :
+                console.log(action)
+                return state.filter(sample_id => sample_id !== action.sample_id)
+        default:
+            return state 
+    }
+}
         
        
 
@@ -101,6 +121,7 @@ const rootReducer = combineReducers({
     api: apiReducer,
     user: userReducer,
     collection: collectionReducer,
+    addedToCollecttion: addedToCollecttionReducer,
     // mySamples: mySamplesReducer,
 })
 

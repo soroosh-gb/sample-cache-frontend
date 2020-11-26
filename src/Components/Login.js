@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../redux/actions.js'
+import ErrorMessage  from './ErrorMessage' 
 
 
 class Login extends React.Component{
@@ -16,14 +17,41 @@ class Login extends React.Component{
         })
     }
 
- 
-
-    localSubmitHandler = (e) => { 
+    localSubmitHandler = (e) => {
         e.preventDefault()
-        this.props.submitHandler(this.state, this.props.history)
-       
-     
+        fetch('http://localhost:3000/api/v1/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({user: this.state})
+        })  
+        .then(resp => resp.json())
+        .then(loginResponse => {
+        if(loginResponse.user){
+            // this.props.submitHandler(loginResponse, this.props.history)
+            this.hasUser(loginResponse, this.props.history)
+        }
+        else if(loginResponse.message){
+            // console.log(loginResponse.message)
+            this.noUser(loginResponse.message)
+            
+        }
+
+    })
+   
+}
+
+    hasUser = (loginResponse, history) => {
+        this.props.submitHandler(loginResponse, history)
     }
+
+    noUser = (message) => {
+        console.log("sdf")
+        return <ErrorMessage meesage={message}/>
+    }
+    
 
     render(){
         // console.log(this.props.history)
@@ -36,6 +64,7 @@ class Login extends React.Component{
                     <input type="submit"/>
                 </form>
                 <br></br>
+                {/* <ErrorMessage /> */}
                 {/* <a onClick={this.clickHandler} href="/login/create">Create Account</a> */}
             </div>
         )
@@ -44,7 +73,7 @@ class Login extends React.Component{
 
 function mdp(dispatch){
     return {
-        submitHandler: (user, his) => dispatch(loginUser(user, his))
+        submitHandler: (loginResponse, history) => dispatch(loginUser(loginResponse, history))
             }
 }
 

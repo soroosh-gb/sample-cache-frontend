@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addToCollectionAction } from '../redux/actions.js'
 import { removeOwnSample } from '../redux/actions.js'
+import { AddingAction } from '../redux/actions.js'
 import ReactAudioPlayer from 'react-audio-player';
-import CollectionSample from './CollectionSample'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class Sample extends React.Component{
@@ -11,6 +13,8 @@ class Sample extends React.Component{
     localClickHandler = () => {
         // console.log(this.props.user.id)
         this.props.addToCollection(this.props.sample.id, this.props.user.id)
+
+        this.props.adding(this.props.sample.id)
     }
 
     removeMySample = () => {
@@ -18,9 +22,14 @@ class Sample extends React.Component{
         this.props.removeMine(this.props.sample.id)
     }
     render(){
-        // console.log(this.props.sample.id)
+        
+        // console.log(this.props.user)
+
         return(
-            <div style={{backgroundColor: "purple"}}>
+            <>
+            {this.props.user ?
+                <>
+                 <div style={{backgroundColor: "purple"}}>
                 
                 {/* <h1>Sample</h1> */}
                 <h3>Title: {this.props.sample.name}</h3>
@@ -32,14 +41,27 @@ class Sample extends React.Component{
                     src={this.props.sample.audio_file}
                     controls
                     />
-                    {/* add button should add the sample to Collection
-                        change colection value to true when add is clicked */}
+                
                 {this.props.sample.creator.id === this.props.user.id ? 
                     <button onClick={this.removeMySample}>Remove My Sample</button>
                 :
-                    <button onClick={this.localClickHandler}>+</button>
+                // <button onClick={this.localClickHandler}>+</button>
+                    this.props.addedToCollecttion.includes(this.props.sample.id) ?
+                        null   
+                    : <button onClick={this.localClickHandler}><FontAwesomeIcon icon="heart" /></button>
+                //                 <button onClick={this.localClickHandler}>{this.props.addedToCollecttion.includes(this.props.sample.id)? "nada" : "+"}</button>
+
                 }
             </div>
+                </>
+            :
+                <>
+                   <h1></h1>
+                </>
+
+            }
+            </>
+
         )
     }
 
@@ -50,7 +72,8 @@ class Sample extends React.Component{
 // connect(msp, mdp)(Sample)
 function mdp(dispatch){
     return { addToCollection: (sampleId, userId) => dispatch(addToCollectionAction(sampleId, userId)),
-             removeMine: (id) => dispatch(removeOwnSample(id))    
+             removeMine: (id) => dispatch(removeOwnSample(id)),
+             adding: (id) => dispatch(AddingAction(id)) 
             }
 }
 
@@ -59,6 +82,7 @@ function msp(state){
         api: state.api,
         user: state.user,
         collection: state.collection,
+        addedToCollecttion: state.addedToCollecttion
         }
     // console.log(state)
   }

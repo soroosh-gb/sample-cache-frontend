@@ -41,14 +41,14 @@ class Collection extends React.Component{
         // console.log(this.props.user)
         return(
             <>
-                {this.props.user ?  
-                <div>
-                {/* <h1>Collection</h1> */}
-                {/* {this.getCollection()} */}
-                {this.renderCollection()}
-                </div>
+                {this.props.collection === 0 ?  
+                    <>
+                        <h1>Loading collection...</h1>
+                    </>
                 :
-                <Redirect to="/login"/>
+                    <>
+                        {this.renderCollection()}
+                    </>
              }
             </>
 

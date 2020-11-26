@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux'
-import { removeFromCollection } from '../redux/actions'
+import { removeFromCollection, RemovingAction } from '../redux/actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class CollectionSample extends React.Component{
 
@@ -9,9 +10,11 @@ class CollectionSample extends React.Component{
     localClickHandler = () => {
         // console.log(this.props.id)
         this.props.remove(this.props.id)
+
+        this.props.removing(this.props.sample.id)
     }
     render(){
-        // console.log("this.props")
+        // console.log(this.props)
         
         return(
             <div style={{backgroundColor: "purple"}}>
@@ -28,14 +31,16 @@ class CollectionSample extends React.Component{
                     />
                     {/* add button should add the sample to Collection
                         change colection value to true when add is clicked */}
-                    <button onClick={this.localClickHandler}>-</button>
+                    <button onClick={this.localClickHandler}><FontAwesomeIcon icon="trash" size="lg" /></button>
             </div>
         )
     }
 }
 
 function mdp(dispatch){
-    return { remove: (id) => dispatch(removeFromCollection(id))}
+    return { remove: (id) => dispatch(removeFromCollection(id)),
+             removing: (id) => dispatch(RemovingAction(id))        
+    }
 }
 
 

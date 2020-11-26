@@ -37,50 +37,55 @@ export function createAction(form){
 
 }
 
-export function createUser(newUser, history){
-    // console.log("new", form)
-    let token = localStorage.getItem("token")
-    history.push("/home")
-    return function(dispatch) {
-        fetch('http://localhost:3000/api/v1/users', {
-            method: 'POST',
-            headers: {
-                Authorization:`Bear ${token}`,
-                'Content-Type': 'application/json',
-                accepts: 'application/json'
-            },
-            body: JSON.stringify({user: newUser})
-        })  
-        .then(resp => resp.json())
-        .then(payload => dispatch({ type: "CREATE_USER", payload})) 
-        // .then(data => console.log(data))
-        // .then(payload => {
-        //     (payload => dispatch({ type: "CREATE_USER", payload: payload}))
-            // (console.log(payload))
-            // localStorage.setItem("token", payload.jwt) 
-        
-            
-        // .then(payload => dispatch({ type: "CREATE_USER", payload: payload})) 
-        }
+// export function createUser(newUser, history){
+ 
+//     let token = localStorage.getItem("token")
+//     history.push("/home")
+//     return function(dispatch) {
+//         fetch('http://localhost:3000/api/v1/users', {
+//             method: 'POST',
+//             headers: {
+//                 Authorization:`Bear ${token}`,
+//                 'Content-Type': 'application/json',
+//                 accepts: 'application/json'
+//             },
+//             body: JSON.stringify({user: newUser})
+//         })  
+//         .then(resp => resp.json())
+//         .then(payload => dispatch({ type: "CREATE_USER", payload})) 
+ 
+//         }
+// }
 
-}
-
-export function loginUser(user, history){
+export function createUser(signupResponse, history){
    
-    return function(dispatch) {
-        
-        
-        fetch('http://localhost:3000/api/v1/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify({user: user})
-        })  
-        .then(resp => resp.json())
-        .then(payload => dispatch({ type: "LOGIN_USER", payload }, history.push('/home')))
-        
+    return function(dispatch) { 
+       dispatch({ type: "CREATE_USER", signupResponse}, history.push('/home'))     
+    }
+}
+// export function loginUser(user, history){
+   
+//     return function(dispatch) {
+//         // history.push('/home')
+
+//         fetch('http://localhost:3000/api/v1/login', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 Accept: 'application/json'
+//             },
+//             body: JSON.stringify({user: user})
+//         })  
+//         .then(resp => resp.json())
+//         .then(payload => dispatch({ type: "LOGIN_USER", payload}))
+//         // .catch(console.log)
+//     }
+// }
+
+export function loginUser(loginResponse, history){
+   
+    return function(dispatch) { 
+       dispatch({ type: "LOGIN_USER", loginResponse}, history.push('/home'))     
     }
 }
 
@@ -117,8 +122,9 @@ export function addToCollectionAction(sampleId, userId){
 export function logout(history){
     return function(dispatch){
         // console.log("here",history)
+        history.push("/login")
         
-        dispatch({ type: "LOGOUT" }, history.push("/login"))
+        dispatch({ type: "LOGOUT" })
     }
 }
 
@@ -170,5 +176,19 @@ export function removeOwnSample(id){
        })
        .then(resp => resp.json())
        .then(payload => dispatch({ type: "REMOVE_OWN_SAMPLE", payload }))
+    }
+}
+
+
+export function AddingAction(sample_id){
+    return function(dispatch) { 
+       dispatch({ type: "ADDED", sample_id})     
+    }
+}
+
+
+export function RemovingAction(sample_id){
+    return function(dispatch) { 
+       dispatch({ type: "REMOVED", sample_id})     
     }
 }
