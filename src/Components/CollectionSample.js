@@ -3,6 +3,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import { connect } from 'react-redux'
 import { removeFromCollection, removingAction } from '../redux/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../styles/Sample.css'
 
 class CollectionSample extends React.Component{
 
@@ -17,20 +18,22 @@ class CollectionSample extends React.Component{
         // console.log(this.props)
         
         return(
-            <div style={{backgroundColor: "purple"}}>
+            <div className="card">
                 
                 {/* <h1>Sample</h1> */}
-                <h3>Title: {this.props.sample.name}</h3>
+                <h3 className="info">{this.props.sample.name}</h3>
                 {/* <h3>Artist: {this.props.creator.username}</h3> */}
-                <h3>Genre: {this.props.sample.genre}</h3>
-                <img src={this.props.sample.image_file} style={{height: "100px", width: "100px"}}/>
+                <h3 className="info">Genre: {this.props.sample.genre}</h3>
+                <img className="image" src={this.props.sample.image_file}/>
                 {/* <audio  src={this.props.sample.audio_file} autoPlay />  */}
-                <ReactAudioPlayer style={{backgroundColor: "black"}}
+                <p>
+                <ReactAudioPlayer className="player" 
                     src={this.props.sample.audio_file}
                     controls
                     />
                     {/* add button should add the sample to Collection
                         change colection value to true when add is clicked */}
+                </p>   
                     <button onClick={this.localClickHandler}><FontAwesomeIcon icon="trash" size="lg" /></button>
             </div>
         )

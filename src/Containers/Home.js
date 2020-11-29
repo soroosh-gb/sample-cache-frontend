@@ -1,5 +1,4 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Sample from '../Components/Sample'
 // import { fetchSamplesAction } from '../redux/actions';
@@ -29,14 +28,14 @@ class Home extends React.Component{
             <>
             {this.props.api.length === 0 ? 
                 <>
-                <h1>Loading samples...</h1>
+                <h1 style={{textAlign: "center"}}>Loading samples...</h1>
                 
                 </>
                 :
-                <>
-                <h1>Listen and add to your collection!</h1>
+                <div className= "header" >
+                <h1 style={{textAlign: "center"}}>Listen and add to your collection!</h1>
                 {this.renderSamples()}
-                </>
+                </div>
             }
             </>
             

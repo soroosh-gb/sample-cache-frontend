@@ -114,15 +114,15 @@ Thursday;
 
 
 Friday;
-    -   Add Message feature
+    -   OFFLINE!
 
 
 Saturday;
-    -   Search feature
+    -   Styling
 
 Sunday;
-    -   Styling
     -   Apply fontAwsome
+    -   Add Search/Message feature
 
 Monday;
     -   Styling

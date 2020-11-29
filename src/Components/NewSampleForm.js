@@ -11,19 +11,21 @@ class NewSampleForm extends React.Component{
         name: "",
         genre: "",
         collection: false,
-        // creator: this.props.user,
     }
 
     changeHandler = (e) => {
         
         this.setState({ 
-        [e.target.name]: e.target.files[0],
-        // audio_file: e.target.files[0],
-        // image_file: e.target.files[0],
-        // name: e.target.value,
-            
+        [e.target.name]: e.target.files[0],           
          })
-        //  console.dir(e.target.value)
+ 
+    }
+
+    secondChangeHandler = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+        
     }
 
     localSubmitHandler = (e) => {
@@ -55,20 +57,21 @@ class NewSampleForm extends React.Component{
 
     render(){
         // console.log("IN FORM",this.props.user)
+        // console.log(this.state)
         return(
             <div className='from'>
                 <h1>New Sample Form</h1>
                 <form onSubmit={this.localSubmitHandler}>
                     
-                    <lable>Audio Upload</lable>
+                    <lable>Audio Upload(mp3. only)</lable>
                     <input type="file" name="audio_file" onChange={this.changeHandler}/>
                     <br/><br/>
                     <lable>Image Upload</lable>
                     <input type="file" name="image_file" onChange={this.changeHandler}/>
                     <br/><br/>
-                    <input type="text" name="name" placeholder="name" onChange={this.changeHandler}/>
+                    <input type="text" name="name" placeholder="name" onChange={this.secondChangeHandler}/>
                     <br/><br/>
-                    <input type="text" name="genre" placeholder="genre" onChange={this.changeHandler}/>
+                    <input type="text" name="genre" placeholder="genre" onChange={this.secondChangeHandler}/>
                     <br/><br/>
 
                     <input type="submit"/>

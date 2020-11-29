@@ -1,9 +1,9 @@
 import React from 'react'
 import NewSampleForm from '../Components/NewSampleForm'
 import { connect } from 'react-redux'
-// import { mySamples } from '../redux/actions.js'
-import { Redirect } from 'react-router-dom'
+
 import Sample from '../Components/Sample'
+import '../styles/Sample.css'
 
 
 class MySamples extends React.Component{
@@ -33,7 +33,7 @@ class MySamples extends React.Component{
                     <h1>Loading samples...</h1>
                 :
                 <>                    */}
-                    <h1>Create sample!</h1>
+                    <h1 className= "header">Create sample!</h1>
                     {/* {this.fetchMySamples()} */}
                     <button onClick={this.clickHandler}>New sample</button>
                     {this.state.showForm ? <NewSampleForm /> : null}

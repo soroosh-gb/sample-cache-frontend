@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CollectionSample from '../Components/CollectionSample'
-import { Redirect } from 'react-router-dom'
+import '../styles/Sample.css'
 // import { fetchCollectionAction } from '../redux/actions.js'
 
 
@@ -29,7 +29,7 @@ class Collection extends React.Component{
             }else {
                 return(
                     <>
-                    <h3>No sample is added to collection!</h3>
+                    <h3 style={{textAlign: "center"}}>No sample is added to collection!</h3>
                     </>
                 )
             }
@@ -43,7 +43,7 @@ class Collection extends React.Component{
             <>
                 {this.props.collection === 0 ?  
                     <>
-                        <h1>Loading collection...</h1>
+                        <h1 style={{textAlign: "center"}}>Loading collection...</h1>
                     </>
                 :
                     <>

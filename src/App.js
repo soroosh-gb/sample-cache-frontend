@@ -13,15 +13,15 @@ import Logout from './Components/Logout'
 import { fetchCollectionAction } from './redux/actions.js'
 import { fetchSamplesAction } from './redux/actions';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee, faHeart, faRss, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faCoffee, faHeart, faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faCoffee, faHeart, faTrashAlt)
+library.add(faCheckSquare, faCoffee, faHeart, faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc)
 
 class App extends React.Component{
 
   componentDidMount(){
     this.props.fetchSamples()
-    
+
     const token = localStorage.getItem("token")
     if (token) {
       fetch("http://localhost:3000/api/v1/profile", {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 function Navbar(props){
@@ -8,9 +9,10 @@ function Navbar(props){
     return (
         <div style={{ backgroundColor: 'black', borderBottom: '3px solid black', paddingTop: '20px', paddingLeft: '20px', paddingBottom: '20px', marginBottom: '3px'}}>
 
+            <FontAwesomeIcon icon="compact-disc" size="3x" spin className="disc"/>
         {props.user ?  
         <>
-        
+
             <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/home">Home</NavLink>
             
             <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/collection">Collection</NavLink>

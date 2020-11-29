@@ -4,6 +4,7 @@ import { addToCollectionAction } from '../redux/actions.js'
 import { removeOwnSample } from '../redux/actions.js'
 import { addingAction } from '../redux/actions.js'
 import ReactAudioPlayer from 'react-audio-player';
+import '../styles/Sample.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -29,19 +30,21 @@ class Sample extends React.Component{
             <>
             {this.props.user ?
                 <>
-                 <div style={{backgroundColor: "purple"}}>
+            <div className="card">
                 
                 {/* <h1>Sample</h1> */}
-                <h3>Title: {this.props.sample.name}</h3>
-                <h3>Artist: {this.props.sample.creator.username}</h3>
-                <h3>Genre: {this.props.sample.genre}</h3>
-                <img src={this.props.sample.image_file} style={{height: "100px", width: "100px"}}/>
+                <h3 className="info">{this.props.sample.name}</h3>
+                <h3 className="info">By: {this.props.sample.creator.username}</h3>
+                <h3 className="info">Genre: {this.props.sample.genre}</h3>
+                <img src={this.props.sample.image_file} className="image"/>
                 {/* <audio  src={this.props.sample.audio_file} autoPlay />  */}
-                <ReactAudioPlayer style={{backgroundColor: "black"}}
+                <p>
+                <ReactAudioPlayer className="player"
                     src={this.props.sample.audio_file}
                     controls
                     />
                 
+                </p>
                 {this.props.sample.creator.id === this.props.user.id ? 
                     <button onClick={this.removeMySample}><FontAwesomeIcon icon="trash" size="lg" /></button>
                 :

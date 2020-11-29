@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser, setError } from '../redux/actions.js'
+import LoginForm from '../styles/LoginForm.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 
@@ -68,13 +70,21 @@ class Login extends React.Component{
         // console.log(this.props.history)
         return(
             <div>
-                <h1>Login</h1>
-                <form onSubmit={this.localSubmitHandler}>
-                    <input type="test" name="username" placeholder="username" onChange={this.changeHandler}/>
-                    <input  type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
-                    <input type="submit"/>
+                <form className="form-1" onSubmit={this.localSubmitHandler}>
+                <p class="field">
+                    <FontAwesomeIcon icon="user-astronaut" size="2x" spin className="user"/>
+                    <input className="username" type="test" name="username" placeholder="username" onChange={this.changeHandler}/>
+                </p>
+                <p class="field">
+                    <FontAwesomeIcon icon="unlock-alt" size="2x" className="user"/>
+                    <input className="password" type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
+                </p>
+                <p class="submit">  
+                    <input type="submit" value="Login"/>
+                    
+                </p>
                 </form>
-                <h2>{this.props.errorMessage}</h2>
+                <h2 className="error">{this.props.errorMessage}</h2>
             </div>
         )
     }
