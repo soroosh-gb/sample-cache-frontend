@@ -2,7 +2,7 @@
 /* body{
    margin: 10px;
 } */
-.card{
+/* .card{
     border-radius: 30px;
     background-color:#343a40;
     padding: 15px;
@@ -14,17 +14,14 @@
     width: 80%;
     float: left;
     margin-right: 10px;
-    /* background-color: purple; */
-    /* position: relative; */
-    /* margin: 20px; */
+
 }
 
 .info{
     position: relative;
     
     text-align: center;
-    /* margin-left: 15px; */
-    /* margin-top: 15px; */
+
     color: white;
     
 } 
@@ -33,4 +30,4 @@
     width: 150px;
     height: 150px;
     text-align: center;
-}
+} */

@@ -1,0 +1,43 @@
+.commentBox{
+    
+    margin-top: 60px;
+    padding: 5px;
+    background-color: #f5f3f4;
+    text-align: left;
+    color: black;
+    /* float: left; */
+    border-radius: 30px;
+}
+
+.commentList{
+    background-color: #b1a7a6;
+    border-radius: 10px;
+    /* padding-left: 5px; */
+}
+
+.comment{
+    margin: 10px;
+}
+.author{
+    margin: 5px;
+    border-bottom: 1px solid black;
+}
+
+.text{
+margin: 5px;
+
+}
+
+.commentBtn{
+    margin:10px;
+    border-radius: 15px;
+    background-color: rgb(252, 163, 17);
+}
+
+.commentForm{
+    margin: 10px;
+}
+
+.commentText{
+    width: 70%;
+}

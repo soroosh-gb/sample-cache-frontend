@@ -7,6 +7,7 @@ import ReactAudioPlayer from 'react-audio-player';
 import '../styles/Sample.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CommentBox from '../Containers/CommentBox.js'
 
 
 class Sample extends React.Component{
@@ -33,10 +34,11 @@ class Sample extends React.Component{
             <div className="card">
                 
                 {/* <h1>Sample</h1> */}
+            
+                <img className="image" src={this.props.sample.image_file} />
                 <h3 className="info">{this.props.sample.name}</h3>
                 <h3 className="info">By: {this.props.sample.creator.username}</h3>
                 <h3 className="info">Genre: {this.props.sample.genre}</h3>
-                <img src={this.props.sample.image_file} className="image"/>
                 {/* <audio  src={this.props.sample.audio_file} autoPlay />  */}
                 <p>
                 <ReactAudioPlayer className="player"
@@ -44,18 +46,30 @@ class Sample extends React.Component{
                     controls
                     />
                 
-                </p>
+                {/* </p> */}
                 {this.props.sample.creator.id === this.props.user.id ? 
-                    <button onClick={this.removeMySample}><FontAwesomeIcon icon="trash" size="lg" /></button>
+                    <button className="icons" onClick={this.removeMySample}><FontAwesomeIcon icon="trash" size="lg" /></button>
                 :
                 // <button onClick={this.localClickHandler}>+</button>
                     this.props.addedToCollecttion.includes(this.props.sample.id) ?
                         null   
-                    : <button onClick={this.localClickHandler}><FontAwesomeIcon icon="heart" /></button>
+                    : <button className="icons" onClick={this.localClickHandler}><FontAwesomeIcon icon="heart" /></button>
                 //                 <button onClick={this.localClickHandler}>{this.props.addedToCollecttion.includes(this.props.sample.id)? "nada" : "+"}</button>
 
                 }
+                </p>
+                <p>
+                    <CommentBox sampleId={this.props.sample.id} />
+                </p>
+                
+               
+                {/* <CommentBox sampleId={this.props.sample.id} /> */}
             </div>
+            
+               
+                {/* <CommentBox comments={this.props.sample.comments}/> */}
+                {/* <CommentBox sampleId={this.props.sample.id}/> */}
+               
                 </>
             :
                 <>

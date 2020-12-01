@@ -12,6 +12,18 @@ export function fetchSamplesAction(){
     // fetch our samples
 }
 
+export function fetchCommentsAction(){
+    // this is where thunk comes handy
+    return function(dispatch) {
+        fetch("http://localhost:3000/api/v1/comments")
+        .then(resp => resp.json())
+        .then(payload => dispatch({ type: "FETCH_COMMENTS", payload}))
+        // .then(payload => console.log(payload))
+        .catch(console.log)
+    }
+    // fetch our samples
+}
+
 export function createAction(form){
     console.log("new", form)
     let token = localStorage.getItem("token")
@@ -211,5 +223,30 @@ export function removingAction(sample_id){
 export function setUserAction(user){
     return function(dispatch){
         dispatch({ type: "SET_USER", user})
+    }
+}
+
+export function createCommentAction(comment){
+    let token = localStorage.getItem("token")
+    return function(dispatch) {
+    // return function(dispatch, getstate ) {
+        fetch("http://localhost:3000/api/v1/comments", {
+            method: "POST",
+            // headers: {
+            //     'Content-Type': 'application/json',
+            //     Accept: 'application/json'
+            // },
+            headers: {
+                Authorization:`Bearer ${token}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify ({comment: comment})
+        })
+        .then(resp => resp.json()) 
+        // .then(data => console.log(data))
+        .then(payload => dispatch({ type: "CREATE_COMMENT", payload}))
+
+        // .then(sample => dispatch({ type: "ADD_SAMPLE", payload: [...getstate().api, sample] }))
     }
 }

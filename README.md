@@ -118,14 +118,14 @@ Friday;
 
 
 Saturday;
-    -   Styling
+    -   Styling √
 
 Sunday;
-    -   Apply fontAwsome
-    -   Add Search/Message feature
+    -   Apply fontAwsome √
 
 Monday;
-    -   Styling
+    -   Add Search/Message feature
 
 Tuesday;
+    -   Styling
     -   Reccord demo video

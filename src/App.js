@@ -12,6 +12,7 @@ import { setUserAction } from './redux/actions';
 import Logout from './Components/Logout'
 import { fetchCollectionAction } from './redux/actions.js'
 import { fetchSamplesAction } from './redux/actions';
+import { fetchCommentsAction } from './redux/actions';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheckSquare, faCoffee, faHeart, faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,6 +34,7 @@ class App extends React.Component{
 
       
       this.props.fetchCollection()
+      this.props.fetchComments()
     }
     else{
       <Redirect to="/login"/>
@@ -68,7 +70,8 @@ class App extends React.Component{
 function mdp(dispatch){
   return { setUser: (user) => dispatch(setUserAction(user)),
            fetchSamples: () => dispatch(fetchSamplesAction()),
-           fetchCollection: () => dispatch(fetchCollectionAction()) 
+           fetchCollection: () => dispatch(fetchCollectionAction()),
+           fetchComments: () => dispatch(fetchCommentsAction())
   }
 }
 

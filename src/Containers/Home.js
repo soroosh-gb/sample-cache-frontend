@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Sample from '../Components/Sample'
 // import { fetchSamplesAction } from '../redux/actions';
+import CommentBox from './CommentBox.js'
 
 
 
@@ -15,6 +16,7 @@ class Home extends React.Component{
         let allSamples = this.props.api
         if(allSamples.length > 0){
             return allSamples.map((el) => <Sample key={el.index} sample={el}/>)
+            
         }
         else{
             <h1>Loading...</h1>
@@ -35,6 +37,7 @@ class Home extends React.Component{
                 <div className= "header" >
                 <h1 style={{textAlign: "center"}}>Listen and add to your collection!</h1>
                 {this.renderSamples()}
+                
                 </div>
             }
             </>
@@ -53,7 +56,9 @@ function msp(state){
     return { api: state.api,
             user: state.user,
             addedToCollection: state.addedToCollection,
-            collection: state.collection }
+            collection: state.collection,
+            comments: state.comments,
+         }
 }
 export default connect(msp, mdp)(Home)
 

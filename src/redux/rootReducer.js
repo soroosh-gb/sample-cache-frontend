@@ -9,6 +9,7 @@ const defaultState = {
     // mySamples: [],
     addedToCollecttion: [],
     errorMessage: "",
+    comments: [],
 }
 
 
@@ -119,6 +120,18 @@ function addedToCollecttionReducer(state = defaultState.addedToCollecttion, acti
             return state 
     }
 }
+
+function commentsReducer(state = defaultState.comments, action){
+    switch (action.type) {
+
+        case "FETCH_COMMENTS":
+            // console.log(action.payload)
+            return action.payload
+
+        default:
+            return state
+    }
+}
         
        
 
@@ -130,6 +143,7 @@ const rootReducer = combineReducers({
     collection: collectionReducer,
     addedToCollecttion: addedToCollecttionReducer,
     errorMessage: errorMessageReducer,
+    comments: commentsReducer,
 })
 
 export default rootReducer;

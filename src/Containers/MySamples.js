@@ -3,7 +3,7 @@ import NewSampleForm from '../Components/NewSampleForm'
 import { connect } from 'react-redux'
 
 import Sample from '../Components/Sample'
-import '../styles/Sample.css'
+import '../styles/MySamples.css'
 
 
 class MySamples extends React.Component{
