@@ -251,24 +251,24 @@ export function createCommentAction(comment){
     }
 }
 
-// export function editCommentAction(){
-    // let token = localStorage.getItem("token")
-    // return function(dispatch) {
+export function editCommentAction(comment, id){
+    let token = localStorage.getItem("token")
+    return function(dispatch) {
         // console.log(comment, id)
-        // fetch(`http://localhost:3000/api/v1/comments/${id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         Authorization:`Bearer ${token}`,
-        //         'Content-Type': 'application/json',
-        //         Accept: 'application/json',
-        //     },
-        //     body: JSON.stringify ({text: comment})
-        // })
-        
-        // dispatch({ type: "EDIT_COMMENT"})
+        fetch(`http://localhost:3000/api/v1/comments/${id}`, {
+            method: "PATCH",
+            headers: {
+                Authorization:`Bearer ${token}`,
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify ({text: comment})
+        })
+        .then(resp => resp.json())
+        .then(payload => dispatch({ type: "EDIT_COMMENT", payload}))
 
-    // }
-// }
+    }
+}
 
 
 export function deleteCommentAction(id){

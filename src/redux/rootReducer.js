@@ -131,8 +131,27 @@ function commentsReducer(state = defaultState.comments, action){
         case "CREATE_COMMENT":
             return [...state, action.payload]
 
-        // case "EDIT_COMMENT":
-        //     return state
+        case "EDIT_COMMENT":
+            // return state.map((el , index) => {
+            //     if (index !== action.payload.id){
+            //         return el
+            //     }
+            //     return{
+            //         ...el,
+            //         ...action.payload
+            //     }
+            // })
+            let comment = state.find(comment => comment.id === action.payload.id)
+            // console.log(state)
+            let id = action.payload.id
+            let text = action.payload.text
+            return {
+                ...state,
+                comment: {
+                    ...state.comment,
+                    text: text
+                }
+            }
 
         case "DELETE_COMMENT":
             // console.log(action.payload)

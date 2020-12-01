@@ -1,17 +1,23 @@
+.home-body {
+    /* margin: 0; */
+    padding: 30px;
+    width: 100%;
+    height: 100%;
+    flex: 1.0;
+    background-color: #395256;
+}
 
-/* body{
-   margin: 10px;
-} */
+
 .card{
     position:relative;
-    width: 90%;
+    flex: 90%;
+    width: 100%;
+    height: 20%;
     border-radius: 30px;
     background-color:#343a40;
     padding: 15px;
     padding-bottom: 0px;
     margin: 10px;
-    /* inline-size: 45%;
-     */
     float: left;
 }
 .player{
@@ -45,9 +51,76 @@
     /* text-align: left; */
     width: 150px;
     height: 150px;
+    margin-right: 10px;
     
 }
 
 .icons{
     margin: 10px;
+}
+
+.newSampleForm{
+    text-align: left;
+    width: 70%;
+    background-color: #14213D;
+    color: white;
+    padding: 10px;
+    margin-left: 11%;
+    /* margin: 60px auto 30px; */
+
+    margin-top: 10px;
+    position: relative;
+}
+
+.newSampleForm .field {
+    position: relative; /* For the icon positioning */
+    /* background-color:white; */
+}
+
+.audioFile {
+    position: relative;
+    background-color: #e07a5f;
+    margin: 5px;
+}
+
+.imageFile {
+    position: relative;
+    background-color: #e07a5f;
+    margin: 5px;
+}
+
+.nameInput{
+    position: relative;
+    background-color: #e07a5f;
+    margin: 5px;
+    margin-right: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+.genreInput{
+    position: relative;
+    background-color: #e07a5f;
+    margin: 5px;
+}
+
+.submitBtn{
+    text-align: center;
+}
+
+.newSampleBtn{
+    position: relative;
+    background-color: #14213D;
+    color: whitesmoke;
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-left: 32%;
+    
+}
+
+.alaki{
+    margin: 0px;
+    float: left;
 }

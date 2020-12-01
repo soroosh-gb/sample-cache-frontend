@@ -28,9 +28,9 @@ class Sample extends React.Component{
         // console.log(this.props.user)
 
         return(
-            <>
+            <p className="alaki">
             {this.props.user ?
-                <>
+            <p className="alaki">
             <div className="card">
                 
                 {/* <h1>Sample</h1> */}
@@ -44,7 +44,7 @@ class Sample extends React.Component{
                 <ReactAudioPlayer className="player"
                     src={this.props.sample.audio_file}
                     controls
-                    />
+                />
                 
                 {/* </p> */}
                 {this.props.sample.creator.id === this.props.user.id ? 
@@ -70,14 +70,14 @@ class Sample extends React.Component{
                 {/* <CommentBox comments={this.props.sample.comments}/> */}
                 {/* <CommentBox sampleId={this.props.sample.id}/> */}
                
-                </>
+            </p>
             :
-                <>
-                   <h1></h1>
-                </>
+            
+                   null
+            
 
             }
-            </>
+            </p>
 
         )
     }

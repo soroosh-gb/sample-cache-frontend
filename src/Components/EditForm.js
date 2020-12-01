@@ -8,25 +8,27 @@ class EditForm extends React.Component{
         text: this.props.comment.text,
     }
 
-    // localSubmitHandler = (e) => {
-    //     e.preventDefault()
-    //     this.props.submitHandler(this.state.text, this.props.comment.id)
-    // }
-
     localSubmitHandler = (e) => {
         e.preventDefault()
-        let token = localStorage.getItem("token")
-        fetch(`http://localhost:3000/api/v1/comments/${this.props.comment.id}`, {
-            method: "PATCH",
-            headers: {
-                Authorization:`Bearer ${token}`,
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-            },
-            body: JSON.stringify ({text: this.state.text})
-        })
-        // this.props.submitHandler()
+        this.props.submitHandler(this.state.text, this.props.comment.id)
     }
+
+    // localSubmitHandler = (e) => {
+        // e.preventDefault()
+        // let token = localStorage.getItem("token")
+        // fetch(`http://localhost:3000/api/v1/comments/${this.props.comment.id}`, {
+        //     method: "PATCH",
+        //     headers: {
+        //         Authorization:`Bearer ${token}`,
+        //         'Content-Type': 'application/json',
+        //         Accept: 'application/json',
+        //     },
+        //     body: JSON.stringify ({text: this.state.text})
+        // })
+        // .then(resp => resp.json())
+        // .then(payload => console.log(payload))
+        // this.props.submitHandler()
+    // }
 
     changeHandler = (e) => {
         this.setState({
@@ -39,8 +41,8 @@ class EditForm extends React.Component{
         // console.log(this.state)
         return(
             <div>
-                <form  onSubmit={this.localSubmitHandler}>
-                    <input value={this.state.text} className="commentText" type="text" name="text"  onChange={this.changeHandler}/>
+                <form className="editForm" onSubmit={this.localSubmitHandler}>
+                    <input  value={this.state.text} className="commentText" type="text" name="text"  onChange={this.changeHandler}/>
                     <input type="submit"/>
                 </form>
             </div>
@@ -50,10 +52,10 @@ class EditForm extends React.Component{
 }
 
 
-// function mdp(dispatch){
-//     // return {submitHandler: (comment, id)=>dispatch(editCommentAction(comment, id))}
-//     return {submitHandler: ()=>dispatch(editCommentAction())}
-// }
+function mdp(dispatch){
+    return {submitHandler: (comment, id)=>dispatch(editCommentAction(comment, id))}
+    // return {submitHandler: ()=>dispatch(editCommentAction())}
+}
 
 function msp(state){
     return { user: state.user,
@@ -63,4 +65,4 @@ function msp(state){
     // console.log(state)
   }
 
-export default connect(msp, null)(EditForm)
+export default connect(msp, mdp)(EditForm)

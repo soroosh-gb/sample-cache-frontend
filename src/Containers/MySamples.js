@@ -35,9 +35,11 @@ class MySamples extends React.Component{
                 <>                    */}
                     <h1 className= "header">Create sample!</h1>
                     {/* {this.fetchMySamples()} */}
-                    <button onClick={this.clickHandler}>New sample</button>
-                    {this.state.showForm ? <NewSampleForm /> : null}
                     {this.renderMySamples()}
+                    <p>
+                    <button className="newSampleBtn" onClick={this.clickHandler}>New sample</button>
+                    </p>
+                    {this.state.showForm ? <NewSampleForm /> : null}
                {/* </>  */}
             {/* } */}
             </>

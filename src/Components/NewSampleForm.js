@@ -60,21 +60,24 @@ class NewSampleForm extends React.Component{
         // console.log(this.state)
         return(
             <div className='from'>
-                <h1>New Sample Form</h1>
-                <form onSubmit={this.localSubmitHandler}>
-                    
-                    <lable>Audio Upload(mp3. only)</lable>
-                    <input type="file" name="audio_file" onChange={this.changeHandler}/>
-                    <br/><br/>
-                    <lable>Image Upload</lable>
-                    <input type="file" name="image_file" onChange={this.changeHandler}/>
-                    <br/><br/>
-                    <input type="text" name="name" placeholder="name" onChange={this.secondChangeHandler}/>
-                    <br/><br/>
-                    <input type="text" name="genre" placeholder="genre" onChange={this.secondChangeHandler}/>
-                    <br/><br/>
-
-                    <input type="submit"/>
+                <form className="newSampleForm" onSubmit={this.localSubmitHandler}>
+                    <p class="field">
+                    Audio(mp3. only)
+                    <input className="audioFile" type="file" name="audio_file" onChange={this.changeHandler}/>
+                    </p>
+                    <p class="field">
+                    Image
+                    <input className="imageFile" type="file" name="image_file" onChange={this.changeHandler}/>
+                    </p>
+                    <p class="field">
+                    <input className="nameInput" type="text" name="name" placeholder="name" onChange={this.secondChangeHandler}/>
+                    </p>
+                    <p class="field">
+                    <input className="genreInput" type="text" name="genre" placeholder="genre" onChange={this.secondChangeHandler}/>
+                    </p>
+                    <p className="submitBtn">
+                    <input type="submit" value="Create Sample"/>
+                    </p>
                 </form>
             </div>
         )
