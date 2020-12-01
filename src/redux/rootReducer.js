@@ -27,7 +27,7 @@ function apiReducer(state = defaultState.api, action){
             // console.log("add", action.payload)
             console.log(action.payload)
             return state.filter(sample => sample.id !== action.payload.id)
-            console.log(state)
+            // console.log(state)
         default:
             return state;
           
@@ -128,6 +128,17 @@ function commentsReducer(state = defaultState.comments, action){
             // console.log(action.payload)
             return action.payload
 
+        case "CREATE_COMMENT":
+            return [...state, action.payload]
+
+        // case "EDIT_COMMENT":
+        //     return state
+
+        case "DELETE_COMMENT":
+            // console.log(action.payload)
+            // console.log(state)
+            return state.filter(comment => comment.id !== action.payload.id)
+            // return 
         default:
             return state
     }

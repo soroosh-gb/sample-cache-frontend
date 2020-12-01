@@ -16,8 +16,12 @@ class CommentForm extends React.Component{
         })
     }
 
-    localSubmitHandler = () => {
+    localSubmitHandler = (e) => {
+        e.preventDefault()
         this.props.submitHandler(this.state)
+        // this.setState({
+        //     text: ""
+        // })
     }
 
     render(){
@@ -38,7 +42,8 @@ function mdp(dispatch){
 }
 
 function msp(state){
-    return { user: state.user
+    return { user: state.user,
+             comments: state.comments
             }
 
     // console.log(state)

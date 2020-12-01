@@ -99,7 +99,8 @@ function msp(state){
         api: state.api,
         user: state.user,
         collection: state.collection,
-        addedToCollecttion: state.addedToCollecttion
+        addedToCollecttion: state.addedToCollecttion,
+        comments: state.comments,
         }
     // console.log(state)
   }

@@ -124,8 +124,10 @@ Sunday;
     -   Apply fontAwsome √
 
 Monday;
-    -   Add Search/Message feature
+    -   Add Comment feature
 
 Tuesday;
-    -   Styling
+    - Re-render after comment is edited
+    -   Finish Styling
     -   Reccord demo video
+

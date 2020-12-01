@@ -250,3 +250,39 @@ export function createCommentAction(comment){
         // .then(sample => dispatch({ type: "ADD_SAMPLE", payload: [...getstate().api, sample] }))
     }
 }
+
+// export function editCommentAction(){
+    // let token = localStorage.getItem("token")
+    // return function(dispatch) {
+        // console.log(comment, id)
+        // fetch(`http://localhost:3000/api/v1/comments/${id}`, {
+        //     method: "PATCH",
+        //     headers: {
+        //         Authorization:`Bearer ${token}`,
+        //         'Content-Type': 'application/json',
+        //         Accept: 'application/json',
+        //     },
+        //     body: JSON.stringify ({text: comment})
+        // })
+        
+        // dispatch({ type: "EDIT_COMMENT"})
+
+    // }
+// }
+
+
+export function deleteCommentAction(id){
+    return function(dispatch){
+        // console.log("fetching collection!", user)
+        let token = localStorage.getItem("token")
+       fetch(`http://localhost:3000/api/v1/comments/${id}`,{
+           method: "DELETE",
+           headers: {
+            Authorization:`Bearer ${token}`
+        },
+       })
+       .then(resp => resp.json())
+    //    .then(payload => console.log(payload))
+       .then(payload => dispatch({ type: "DELETE_COMMENT", payload }))
+    }
+}

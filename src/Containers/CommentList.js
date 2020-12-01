@@ -11,7 +11,7 @@ class CommentList extends React.Component{
         return(
             <div className="commentList">
                 {/* <h1>CommentList</h1> */}
-                <Comment author={this.props.comment.user} text={this.props.comment.text} sample={this.props.comment.sample}/>
+                <Comment comment={this.props.comment} author={this.props.comment.user} text={this.props.comment.text} sample={this.props.comment.sample}/>
             </div>
         )
     }
