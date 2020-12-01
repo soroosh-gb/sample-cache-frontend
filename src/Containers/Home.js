@@ -16,7 +16,7 @@ class Home extends React.Component{
     renderSamples = () => {
         let allSamples = this.props.api
         if(allSamples.length > 0){
-            return allSamples.map((el) => <Sample key={el.index} sample={el}/>)
+            return allSamples.map((el) => <Sample key={el.id} sample={el}/>)
             
         }
         else{
@@ -47,10 +47,10 @@ class Home extends React.Component{
     }
 }
 
-function mdp(dispatch){
-    // return { fetchSamples: () => dispatch(fetchSamplesAction())
-              // fetchCollection: () => dispatch(fetchCollectionAction())    
-    }
+// function mdp(dispatch){
+//     // return { fetchSamples: () => dispatch(fetchSamplesAction())
+//               // fetchCollection: () => dispatch(fetchCollectionAction())    
+//     }
   
 
 function msp(state){
@@ -61,6 +61,6 @@ function msp(state){
             comments: state.comments,
          }
 }
-export default connect(msp, mdp)(Home)
+export default connect(msp, null)(Home)
 
 // this.props.api
