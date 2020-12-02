@@ -28,10 +28,20 @@ class CommentBox extends React.Component{
 
     renderCommentList = () => {
         let allComments = this.props.comments
+        let availableSamples = allComments.filter(el => el.sample != null)
+        // console.log(allComments, availableSamples)
         let thisSample = this.props.sampleId
-        if(allComments.length > 0){
-            let filtered = allComments.filter(el => el.sample.id == thisSample)
+        if(availableSamples.length > 0){
+            let filtered = availableSamples.filter(el => el.sample.id == thisSample)
+            if(filtered.length > 0){
                 return filtered.map(el => <CommentList key={el.idd} comment={el}/>)
+            }else{
+                return(
+                    <>
+                    <h3 style={{textAlign: "center"}}>No Comment!</h3>
+                    </>
+                )
+            }
         }else{
             return(
                 <>

@@ -14,7 +14,8 @@ import CommentBox from '../Containers/CommentBox.js'
 class Sample extends React.Component{
 
     state = {
-        liked: false
+        liked: false,
+        loop: false,
     }
     localClickHandler = () => {
         // console.log(this.props.user.id)
