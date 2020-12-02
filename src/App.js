@@ -14,9 +14,11 @@ import { fetchCollectionAction } from './redux/actions.js'
 import { fetchSamplesAction } from './redux/actions';
 import { fetchCommentsAction } from './redux/actions';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheckSquare, faCoffee, faHeart, faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
+// import { fas } from '@fortawesome/free-solid-svg-icons'
+// import { far } from '@fortawesome/free-regular-svg-icons'
+import { faCheckSquare, faCoffee, faHeart,  faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faCheckSquare, faCoffee, faHeart, faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc)
+library.add(faCheckSquare, faCoffee, faHeart,  faTrash, faUserAstronaut, faUnlockAlt, faChevronCircleRight, faCompactDisc)
 
 class App extends React.Component{
 

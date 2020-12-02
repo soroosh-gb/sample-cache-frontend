@@ -13,6 +13,9 @@ import CommentBox from '../Containers/CommentBox.js'
 
 class Sample extends React.Component{
 
+    state = {
+        liked: false
+    }
     localClickHandler = () => {
         // console.log(this.props.user.id)
         this.props.addToCollection(this.props.sample.id, this.props.user.id)
@@ -47,8 +50,8 @@ class Sample extends React.Component{
                 :
                 
                     this.props.addedToCollecttion.includes(this.props.sample.id) ?
-                        <p></p>   
-                    : <button className="icons" onClick={this.localClickHandler} style={{cursor: "pointer"}}><FontAwesomeIcon icon="heart" /></button>
+                    <FontAwesomeIcon className="icons" icon="check-square" size="lg"/>  
+                    : <button className="icons" onClick={this.localClickHandler} style={{cursor: "pointer"}}><FontAwesomeIcon icon="heart" size="lg"/></button>
                     
                 }
                 <ReactAudioPlayer className="player"
