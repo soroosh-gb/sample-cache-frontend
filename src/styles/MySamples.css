@@ -1,33 +1,30 @@
-
-/* body{
-   margin: 10px;
-} */
-/* .card{
-    border-radius: 30px;
-    background-color:#343a40;
-    padding: 15px;
-    margin: 10px;
-    inline-size: 45%;
-    float: left;
-}
-.player{
-    width: 80%;
-    float: left;
-    margin-right: 10px;
-
-}
-
-.info{
+body {
+    font-family: 'Lucida Grande', Helvetica, sans-serif;
+    font: 15px;
+    
+    background-color: rgb(252, 163, 17);  
+    width: 100%;
+    height: 100%;
+    flex: 1.0;
     position: relative;
-    
-    text-align: center;
+}
 
-    color: white;
+.header{
+    width: 100%; 
+    background-color: #14213D;  
     
-} 
+ }
 
-.image{
-    width: 150px;
-    height: 150px;
-    text-align: center;
-} */
+ .newSampleBtn{
+    position: relative;
+    background-color: #14213D;
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: bolder;
+    width: 30%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-left: 34%;
+    
+}

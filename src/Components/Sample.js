@@ -5,6 +5,7 @@ import { removeOwnSample } from '../redux/actions.js'
 import { addingAction } from '../redux/actions.js'
 import ReactAudioPlayer from 'react-audio-player';
 import '../styles/Sample.css'
+import '../styles/CommentBox.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CommentBox from '../Containers/CommentBox.js'
@@ -24,60 +25,48 @@ class Sample extends React.Component{
         this.props.removeMine(this.props.sample.id)
     }
     render(){
-        
-        // console.log(this.props.user)
-
         return(
-            <p className="alaki">
+            <>
             {this.props.user ?
-            <p className="alaki">
+            <>
             <div className="card">
                 
                 {/* <h1>Sample</h1> */}
-            
+            <p className="info">
+                <p>{this.props.sample.name}</p>
+                <p>By: {this.props.sample.creator.username}</p>
+                {/* <p>Genre: {this.props.sample.genre}</p> */}
+            </p>
                 <img className="image" src={this.props.sample.image_file} />
-                <h3 className="info">{this.props.sample.name}</h3>
-                <h3 className="info">By: {this.props.sample.creator.username}</h3>
-                <h3 className="info">Genre: {this.props.sample.genre}</h3>
-                {/* <audio  src={this.props.sample.audio_file} autoPlay />  */}
-                <p>
+                
+                
+
+                  
+                {this.props.sample.creator.id === this.props.user.id ? 
+                    <button className="icons" onClick={this.removeMySample} style={{cursor: "pointer"}}><FontAwesomeIcon icon="trash" size="lg" /></button>
+                :
+                
+                    this.props.addedToCollecttion.includes(this.props.sample.id) ?
+                        <p></p>   
+                    : <button className="icons" onClick={this.localClickHandler} style={{cursor: "pointer"}}><FontAwesomeIcon icon="heart" /></button>
+                    
+                }
                 <ReactAudioPlayer className="player"
                     src={this.props.sample.audio_file}
                     controls
                 />
-                
-                {/* </p> */}
-                {this.props.sample.creator.id === this.props.user.id ? 
-                    <button className="icons" onClick={this.removeMySample}><FontAwesomeIcon icon="trash" size="lg" /></button>
-                :
-                // <button onClick={this.localClickHandler}>+</button>
-                    this.props.addedToCollecttion.includes(this.props.sample.id) ?
-                        null   
-                    : <button className="icons" onClick={this.localClickHandler}><FontAwesomeIcon icon="heart" /></button>
-                //                 <button onClick={this.localClickHandler}>{this.props.addedToCollecttion.includes(this.props.sample.id)? "nada" : "+"}</button>
-
-                }
-                </p>
-                <p>
+                <p></p>
+                    <div className="commentBox">
                     <CommentBox sampleId={this.props.sample.id} />
-                </p>
-                
-               
-                {/* <CommentBox sampleId={this.props.sample.id} /> */}
-            </div>
-            
-               
-                {/* <CommentBox comments={this.props.sample.comments}/> */}
-                {/* <CommentBox sampleId={this.props.sample.id}/> */}
-               
-            </p>
-            :
-            
-                   null
-            
+                    </div>             
 
+            </div>
+
+            </>
+            :
+                   null
             }
-            </p>
+            </>
 
         )
     }

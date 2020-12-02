@@ -1,0 +1,63 @@
+body {
+    font-family: 'Lucida Grande', Helvetica, sans-serif;
+    font: 15px;
+    
+    background-color: rgb(252, 163, 17);  
+    width: 100%;
+    height: 100%;
+    flex: 1.0;
+    position: relative;
+}
+
+
+.newSampleForm{
+    text-align: center;
+    width: 70%;
+    background-color: #14213D;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: 11%;
+    /* margin: 60px auto 30px; */
+
+    margin-top: 10px;
+    position: relative;
+}
+
+.newSampleForm .field {
+    position: relative; 
+}
+
+.audioFile {
+    position: relative;
+    background-color: #e07a5f;
+    color: black;
+    margin: 5px;
+}
+
+.imageFile {
+    position: relative;
+    background-color: #e07a5f;
+    color: black;
+    margin: 5px;
+}
+
+.nameInput{
+    position: relative;
+    background-color: #e07a5f;
+    color: black;
+    margin: 5px;
+
+}
+
+.genreInput{
+    position: relative;
+    background-color: #e07a5f;
+    color: black;
+    margin: 5px;   
+}
+
+
+.submitBtn{
+    text-align: center;
+}

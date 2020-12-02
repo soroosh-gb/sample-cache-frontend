@@ -1,17 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Sample from '../Components/Sample'
-// import { fetchSamplesAction } from '../redux/actions';
-import CommentBox from './CommentBox.js'
+
+import '../styles/Home.css'
 
 
 
 
 class Home extends React.Component{
 
-//    componentDidMount(){
-//        this.props.fetchSamples()
-//    }
+
 
     renderSamples = () => {
         let allSamples = this.props.api
@@ -25,8 +23,7 @@ class Home extends React.Component{
     }
             
     render(){
-        // console.log("home", this.props.user)
-        // console.log(this.props.api)
+
         return(
             <>
             {this.props.api.length === 0 ? 
@@ -36,7 +33,7 @@ class Home extends React.Component{
                 </>
                 :
                 <div className= "header" >
-                <h1 style={{textAlign: "center"}}>Listen and add to your collection!</h1>
+                <h1>Listen and add to your collection!</h1>
                 {this.renderSamples()}
                 
                 </div>
@@ -47,11 +44,7 @@ class Home extends React.Component{
     }
 }
 
-// function mdp(dispatch){
-//     // return { fetchSamples: () => dispatch(fetchSamplesAction())
-//               // fetchCollection: () => dispatch(fetchCollectionAction())    
-//     }
-  
+
 
 function msp(state){
     return { api: state.api,

@@ -7,14 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 function Navbar(props){
     // console.log(props.user)
     return (
-        <div style={{ backgroundColor: 'black', borderBottom: '3px solid black', paddingTop: '20px', paddingLeft: '20px', paddingBottom: '20px', marginBottom: '3px',height: "40px"}}>
+        <div style={{ backgroundColor: 'black', borderBottom: '3px solid black', paddingTop: '20px', paddingLeft: '20px', paddingBottom: '20px', marginBottom: '3px',height: "40px", marginRight: "5px"}}>
 
             <FontAwesomeIcon icon="compact-disc" size="3x" spin className="disc"/>
             <p style={{color: "white", float: "left"}}>Sample Cache</p>
             
         {props.user ?  
         <>
-            <NavLink style={{ marginRight: '15px', color: 'white',float: "right", marginTop: "15px" }}  to="/logout">Log out</NavLink>
+            <NavLink style={{ marginRight: '20px', color: 'white',float: "right", marginTop: "15px" }}  to="/logout">Log out</NavLink>
 
             <NavLink style={{ marginRight: '15px', color: 'white',float: "right", marginTop: "15px" }}  to="/mysamples">My Samples</NavLink>
             
@@ -26,9 +26,9 @@ function Navbar(props){
         </>
         :
         <>
-            <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/signup">Sign Up</NavLink>
-
-            <NavLink style={{ marginRight: '15px', color: 'white' }}  to="/login">Log In</NavLink>
+            <NavLink style={{ marginRight: '20px', color: 'white', float: "right", marginTop: "15px" }}  to="/signup">Sign Up</NavLink>
+            
+            <NavLink style={{ marginRight: '15px', color: 'white', float: "right", marginTop: "15px" }}  to="/login">Log In</NavLink>
 
         </>
         }

@@ -1,0 +1,29 @@
+.commentBox{
+    position: relative;
+    text-align: left;
+    /* size: 40%; */
+    flex: auto;
+    width: 100%;
+    background-color: #b1a7a6;
+    margin-top: 65px;
+    color: black;
+    border-radius: 10px;
+    padding: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 12px;
+    font-weight: bolder;
+    
+}
+
+.commentBtn{
+    margin:10px;
+    border-radius: 15px;
+    background-color: rgb(252, 163, 17);
+}
+
+.showCommentsBtn{
+    margin:10px;
+    border-radius: 15px;
+    background-color: rgb(252, 163, 17);
+}

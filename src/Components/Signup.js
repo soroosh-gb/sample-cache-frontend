@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { createUser } from '../redux/actions.js'
 import { signupError } from '../redux/actions.js'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../styles/Signup.css'
 
 class Signup extends React.Component{
 
@@ -54,7 +55,7 @@ class Signup extends React.Component{
                 
                     <form className="form-1" onSubmit={this.localSubmitHandler}>
                     <p class="field">
-                        <FontAwesomeIcon icon="user-astronaut" size="2x" spin className="user"/>
+                        <FontAwesomeIcon icon="user-astronaut" size="2x" className="user"/>
                         <input className="username" type="test" name="username" placeholder="username" onChange={this.changeHandler}/>
                     </p>
                     <p class="field">
@@ -62,7 +63,7 @@ class Signup extends React.Component{
                         <input className="password" type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
                     </p>
                     <p class="submit">
-                        <input type="submit" value="Sign Up"/>
+                        <input type="submit" value="Sign Up" style={{cursor: "pointer"}}/>
                     </p>
                     </form>
                     <h2 className="error">{this.props.errorMessage}</h2>

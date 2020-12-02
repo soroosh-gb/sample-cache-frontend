@@ -41,7 +41,7 @@ class EditForm extends React.Component{
         // console.log(this.state)
         return(
             <div>
-                <form className="editForm" onSubmit={this.localSubmitHandler}>
+                <form className="editForm" onSubmit={this.localSubmitHandler} >
                     <input  value={this.state.text} className="commentText" type="text" name="text"  onChange={this.changeHandler}/>
                     <input type="submit"/>
                 </form>

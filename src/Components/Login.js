@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { loginUser, setError } from '../redux/actions.js'
 import LoginForm from '../styles/LoginForm.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import '../styles/LoginForm.css'
 
 
 
@@ -72,7 +73,7 @@ class Login extends React.Component{
             <div>
                 <form className="form-1" onSubmit={this.localSubmitHandler}>
                 <p class="field">
-                    <FontAwesomeIcon icon="user-astronaut" size="2x" spin className="user"/>
+                    <FontAwesomeIcon icon="user-astronaut" size="2x" className="user" />
                     <input className="username" type="test" name="username" placeholder="username" onChange={this.changeHandler}/>
                 </p>
                 <p class="field">
@@ -80,7 +81,7 @@ class Login extends React.Component{
                     <input className="password" type="password" name="password" placeholder="password" onChange={this.changeHandler}/>
                 </p>
                 <p class="submit">  
-                    <input type="submit" value="Login"/>
+                    <input type="submit" value="Login" style={{cursor: "pointer"}}/>
                     
                 </p>
                 </form>

@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createAction } from '../redux/actions.js'
 
+import '../styles/NewSampleForm.css'
+
 
 class NewSampleForm extends React.Component{
 
@@ -46,18 +48,10 @@ class NewSampleForm extends React.Component{
             genre: "",
             collection: false,
         })
-
-        // fetch("http://localhost:3000/api/v1/samples", {
-        //     method: "POST",
-        //     body: form
-        // })
-        // .then(resp => resp.json())
-        // .then(sample => console.log(sample))
     }
 
     render(){
-        // console.log("IN FORM",this.props.user)
-        // console.log(this.state)
+
         return(
             <div className='from'>
                 <form className="newSampleForm" onSubmit={this.localSubmitHandler}>
@@ -70,13 +64,15 @@ class NewSampleForm extends React.Component{
                     <input className="imageFile" type="file" name="image_file" onChange={this.changeHandler}/>
                     </p>
                     <p class="field">
+                    Name your sample
                     <input className="nameInput" type="text" name="name" placeholder="name" onChange={this.secondChangeHandler}/>
                     </p>
-                    <p class="field">
+                    {/* <p class="field">
+                    What genre is it 
                     <input className="genreInput" type="text" name="genre" placeholder="genre" onChange={this.secondChangeHandler}/>
-                    </p>
+                    </p> */}
                     <p className="submitBtn">
-                    <input type="submit" value="Create Sample"/>
+                    <input type="submit" value="Create Sample" style={{cursor: "pointer"}}/>
                     </p>
                 </form>
             </div>

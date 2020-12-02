@@ -1,42 +1,24 @@
-.commentBox{
-    
-    margin-top: 60px;
-    padding: 5px;
-    /* margin-bottom: 5px; */
-    background-color: #b1a7a6;
-    text-align: left;
-    color: black;
-    /* float: left; */
-    border-radius: 10px;
-    
-}
 
-.commentList{
-    background-color: #ffffff;
-    border-radius: 5px;
-    
-    /* padding-left: 5px; */
-}
 
 .comment{
     margin: 10px;
     padding-bottom: 5px;
+    margin-left: 5px;
 }
 .author{
     margin: 5px;
     border-bottom: 1px solid black;
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .text{
 margin: 5px;
+font-weight: lighter;
 
 }
 
-.commentBtn{
-    margin:10px;
-    border-radius: 15px;
-    background-color: rgb(252, 163, 17);
-}
+
 
 .commentForm{
     margin: 10px;

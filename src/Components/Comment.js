@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import EditForm from './EditForm'
 import CommentForm from './CommentForm'
 import { deleteCommentAction } from '../redux/actions'
+import '../styles/Comment.css'
 
 class Comment extends React.Component{
 
@@ -29,17 +30,17 @@ class Comment extends React.Component{
         return(
             <div className="comment">
                 {/* <h1>Comment</h1> */}
-                <h3 className="author">{this.props.author.username}</h3>
+                <h3 className="author">{this.props.author.username} :</h3>
                 <h5 className="text">{this.props.text}</h5>
 
                 {this.props.author.id === this.props.user.id ?                 
-                    <button className="btn" onClick={this.clickHandler}>Edit Comment</button> 
+                    <button className="btn" onClick={this.clickHandler} style={{cursor: "pointer"}}>Edit Comment</button> 
                 :
                     null
                 }
                 
                 {this.props.sample.user_id === this.props.user.id || this.props.author.id === this.props.user.id ?
-                <button className="btn" onClick={this.localDeleteHandler}>Delete Comment</button>
+                <button className="btn" onClick={this.localDeleteHandler} style={{cursor: "pointer"}}>Delete Comment</button>
                 :
                 null
                 }

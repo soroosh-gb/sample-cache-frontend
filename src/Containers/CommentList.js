@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Comment from '../Components/Comment'
+import '../styles/CommentList.css'
 
 
 

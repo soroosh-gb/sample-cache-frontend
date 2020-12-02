@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import CommentList from './CommentList'
 import CommentForm from '../Components/CommentForm'
 import NewCommentForm from '../Components/CommentForm'
-import '../styles/Comment.css'
+import '../styles/CommentBox.css'
 
 
 class CommentBox extends React.Component{
 
     state = {
-        commentForm: false
+        commentForm: false,
+        showComments: false,
     }
 
     // renderCommentList = () => {
@@ -19,6 +20,10 @@ class CommentBox extends React.Component{
 
     clickHandler = () => {
         this.setState(prevstate => ({commentForm: !prevstate.commentForm}))
+    }
+
+    showCommentsClickHandler = () => {
+        this.setState(prevstate => ({showComments: !prevstate.showComments}))
     }
 
     renderCommentList = () => {
@@ -41,11 +46,21 @@ class CommentBox extends React.Component{
         // console.log(this.props.sampleId)
         // console.log(this.props.comments[0].sample.id)
         return(
-            <div className="commentBox">
-                <h4>Comments</h4>
-                {this.renderCommentList()}
-                <button className="commentBtn" onClick={this.clickHandler}>Leave a comment...</button>
-                {this.state.commentForm ? <CommentForm sampleId={this.props.sampleId}/> : null}
+            <div>
+                {/* <p>Comments</p> */}
+                <button className="showCommentsBtn" onClick={this.showCommentsClickHandler} style={{cursor: "pointer"}}>Show Comments</button>
+                {this.state.showComments ? 
+
+                this.renderCommentList()
+                
+                :
+                null
+                 }
+            {this.state.showComments ?     
+            <button className="commentBtn" onClick={this.clickHandler} style={{cursor: "pointer"}}>Leave a comment...</button>
+            :
+            null}
+            {this.state.commentForm ? <CommentForm sampleId={this.props.sampleId}/> : null}
             </div>
         )
     }
