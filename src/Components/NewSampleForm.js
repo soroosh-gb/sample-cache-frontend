@@ -57,15 +57,15 @@ class NewSampleForm extends React.Component{
                 <form className="newSampleForm" onSubmit={this.localSubmitHandler}>
                     <p class="field">
                     Audio(mp3. only)
-                    <input className="audioFile" type="file" name="audio_file" onChange={this.changeHandler}/>
+                    <input className="audioFile" type="file" name="audio_file" onChange={this.changeHandler} />
                     </p>
                     <p class="field">
                     Image
-                    <input className="imageFile" type="file" name="image_file" onChange={this.changeHandler}/>
+                    <input className="imageFile" type="file" name="image_file" onChange={this.changeHandler} />
                     </p>
                     <p class="field">
                     Name your sample
-                    <input className="nameInput" type="text" name="name" placeholder="name" onChange={this.secondChangeHandler}/>
+                    <input className="nameInput" type="text" name="name" placeholder="name" onChange={this.secondChangeHandler} value={this.state.name}/>
                     </p>
                     {/* <p class="field">
                     What genre is it 

@@ -19,9 +19,10 @@ class CommentForm extends React.Component{
     localSubmitHandler = (e) => {
         e.preventDefault()
         this.props.submitHandler(this.state)
-        // this.setState({
-        //     text: ""
-        // })
+
+        this.setState({
+            text: ""
+        })
     }
 
     render(){
@@ -29,7 +30,7 @@ class CommentForm extends React.Component{
         return(
             <div>
                 <form className="commentForm" onSubmit={this.localSubmitHandler}>
-                   <input className="commentText" type="text" name="text" onChange={this.changeHandler}/>
+                   <input className="commentText" type="text" name="text" onChange={this.changeHandler} value={this.state.text}/>
                    <input type="submit"/>
                 </form>
             </div>
