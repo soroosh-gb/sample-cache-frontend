@@ -2,7 +2,7 @@ sample-cache-frontend
 
 Sample Cache helps music producers find & share a variety of audio samples used in music production.
 
-<img src="https://static.voices.com/wp-content/uploads/frequencies.jpg" />
+<img src="https://protelostudios.com/wp-content/uploads/2019/03/audio-visualisation1-1920x680.jpg" />
 
 - Utilized JSON Web Tokens and localStorage to store encrypted user information client-side.
 - Utilized Cloudinary to implement file storage management in the cloud.
